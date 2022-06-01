@@ -19,7 +19,7 @@ along with vodle. If not, see <https://www.gnu.org/licenses/>.
 
 export const environment = {
   production: true,
-  privacy_statement_url: "https://mensch72.github.io/assets/datenschutz.html",
+  privacy_statement_url: "https://92.205.108.148/assets/datenschutz.html",
   logging: {
     logLevels: [
       {
@@ -29,7 +29,7 @@ export const environment = {
     ]  
   },
   data_service: {
-    central_db_server_url: "https://sandstorm.pik-potsdam.de/couch/",
+    central_db_server_url: "https://92.205.108.148/couch/",
     central_db_password: "none",
     hash_n_bytes: 32,
     pid_length: 8,
