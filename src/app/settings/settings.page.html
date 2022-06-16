@@ -159,13 +159,17 @@ TODO:
     </div>
   </form>
 
-  <ion-item color="light" (click)="advanced_expanded=!advanced_expanded">
+  <ion-item 
+      [style.display]="E.data_service.allow_other_servers?'block':'none'" 
+      color="light" (click)="advanced_expanded=!advanced_expanded">
     <ion-icon size="small" [name]="advanced_expanded?'caret-down-outline':'caret-forward-outline'" color="primary"></ion-icon>
     <ion-label>
       <small [innerHtml]="'&nbsp;&nbsp;&nbsp;'+('draftpoll.advanced-settings'|translate)"></small>
     </ion-label>
   </ion-item>
-  <app-select-server #select_server [style.display]="advanced_expanded?'block':'none'" [page]="'settings'" [page_object]="this">
+  <app-select-server #select_server 
+    [style.display]="(advanced_expanded && E.data_service.allow_other_servers)?'block':'none'" 
+    [page]="'settings'" [page_object]="this">
   </app-select-server>
 
   <!--APPEARANCE-->
@@ -209,6 +213,9 @@ TODO:
   </ion-item>
   <ion-item>
     <ion-checkbox slot="start" [(ngModel)]="notify_of.delegation_declined" (ngModelChange)="notify_changed()"></ion-checkbox><ion-label [innerHtml]="'notify_of.delegation_declined'|translate"></ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-checkbox slot="start" [(ngModel)]="notify_of.poll_closing_soon" (ngModelChange)="notify_changed()"></ion-checkbox><ion-label [innerHtml]="'notify_of.poll_closing_soon'|translate"></ion-label>
   </ion-item>
   <ion-item>
     <ion-checkbox slot="start" [(ngModel)]="notify_of.poll_closed" (ngModelChange)="notify_changed()"></ion-checkbox><ion-label [innerHtml]="'notify_of.poll_closed'|translate"></ion-label>

@@ -32,6 +32,7 @@ export class SettingsService {
     'delegation_accepted',
     'delegation_declined',
     'new_option',
+    'poll_closing_soon',
     'poll_closed'
   ];
 
@@ -146,6 +147,7 @@ export class SettingsService {
     en: 'English',
     fr: 'Français',
     ko: '한국어',
+    pl: 'Polski',
 //    zh: '中文'
   };
 
