@@ -1,0 +1,77 @@
+item,n,agree,kappa,ci_lo,ci_hi,modal_code,modal_prev,label
+C0,150,1.0,1.0,1.0,1.0,ELIG,1.0,no variation
+C1.primary,150,0.893,0.867,0.804,0.924,AX,0.303,substantial
+C2.3,150,0.933,0.354,0.0,0.645,Y,0.947,unreliable
+C2.4,150,0.687,0.503,0.401,0.602,DIST,0.477,moderate
+C3.1,150,0.86,0.729,0.627,0.823,NONE,0.65,substantial
+C3.2,150,0.707,0.538,0.425,0.649,NOT-STATED,0.487,moderate
+C3.3,150,0.76,0.446,0.286,0.592,NA,0.737,moderate
+C4.1,150,0.807,0.617,0.507,0.727,NA,0.647,substantial
+C4.2,150,0.967,0.749,0.517,0.921,NA,0.93,substantial
+C5.1,150,0.913,0.804,0.696,0.897,Y,0.67,substantial
+C5.2,150,0.8,0.715,0.621,0.804,NA,0.33,substantial
+C7.1,150,0.86,0.615,0.471,0.755,NA,0.783,substantial
+C7.2,150,0.9,0.508,0.326,0.692,NA,0.89,moderate
+C8.2,150,0.853,0.743,0.649,0.831,NA,0.513,substantial
+C9.1,150,0.92,0.531,0.249,0.763,Y,0.907,moderate
+C9.2,150,0.62,0.391,0.276,0.506,SOME-UNSTATED,0.497,unreliable
+C10.1,150,1.0,1.0,1.0,1.0,N,0.993,substantial
+C1.types:AX,150,0.893,0.785,0.675,0.88,0,0.553,substantial
+C1.types:AL,150,0.9,0.793,0.686,0.884,0,0.597,substantial
+C1.types:SB,150,0.9,0.742,0.613,0.856,0,0.737,substantial
+C1.types:EQ,150,0.987,0.963,0.904,1.0,0,0.767,substantial
+C1.types:WD,150,0.907,0.795,0.692,0.894,0,0.653,substantial
+C1.types:SI,150,0.98,0.948,0.885,1.0,0,0.737,substantial
+C1.types:EM,150,0.98,0.94,0.861,1.0,0,0.79,substantial
+C1.types:OT,150,0.96,0.646,0.306,0.882,0,0.94,substantial
+C2.2:RANK,150,0.973,0.945,0.888,0.987,0,0.593,substantial
+C2.2:WEAK,150,0.993,0.93,0.718,1.0,0,0.95,substantial
+C2.2:APPR,150,0.967,0.925,0.854,0.985,0,0.67,substantial
+C2.2:DICH,150,0.987,0.85,0.563,1.0,0,0.953,substantial
+C2.2:CARD,150,0.96,0.801,0.63,0.94,0,0.887,substantial
+C2.2:PAIR,150,0.987,0.744,0.0,1.0,0,0.973,substantial
+C2.2:OTH,150,0.887,0.761,0.65,0.859,0,0.617,substantial
+C8.1:DOM,150,0.947,0.809,0.665,0.924,0,0.833,substantial
+C8.1:NE,150,0.98,0.886,0.736,1.0,0,0.903,substantial
+C8.1:SPE,150,0.98,0.869,0.672,1.0,0,0.917,substantial
+C8.1:BNE,150,0.98,0.886,0.73,1.0,0,0.903,substantial
+C8.1:ITER,150,0.987,0.893,0.688,1.0,0,0.933,substantial
+C8.1:DEV,150,0.973,0.852,0.67,0.969,0,0.9,substantial
+C8.1:BND,150,0.98,0.759,0.387,1.0,0,0.957,substantial
+C8.1:COAL,150,0.987,0.827,0.49,1.0,0,0.96,substantial
+C8.1:OTH,150,0.927,0.523,0.228,0.75,0,0.917,moderate
+C6.VOT.present,150,0.64,0.053,-0.013,0.137,Y,0.8,unreliable
+C6.VOT.behav,93,0.849,0.764,0.652,0.865,STRAT,0.414,substantial
+C6.VOT.behav_stated,93,0.849,0.514,0.292,0.712,EXPLICIT,0.817,moderate
+C6.VOT.info,93,0.871,0.823,0.731,0.908,NA,0.398,substantial
+C6.VOT.info_stated,93,0.892,0.808,0.691,0.909,NA,0.575,substantial
+C6.CAN.present,150,0.993,0.949,0.813,1.0,N,0.93,substantial
+C6.CAN.behav,10,1.0,1.0,1.0,1.0,STRAT,0.9,substantial
+C6.CAN.behav_stated,10,1.0,1.0,1.0,1.0,EXPLICIT,1.0,no variation
+C6.CAN.info,10,0.9,0.783,0.286,1.0,PARTIAL,0.65,substantial
+C6.CAN.info_stated,10,0.9,0.0,0.0,1.0,EXPLICIT,0.95,unreliable
+C6.ORG.present,150,0.947,0.472,0.102,0.764,N,0.947,moderate
+C6.ORG.behav,4,1.0,1.0,1.0,1.0,STRAT,0.75,substantial
+C6.ORG.behav_stated,4,1.0,1.0,1.0,1.0,EXPLICIT,1.0,no variation
+C6.ORG.info,4,0.75,0.667,0.0,1.0,PARTIAL,0.375,substantial
+C6.ORG.info_stated,4,1.0,1.0,1.0,1.0,EXPLICIT,0.5,substantial
+C6.DIS.present,150,0.993,0.797,0.0,1.0,N,0.983,substantial
+C6.DIS.behav,2,1.0,1.0,1.0,1.0,STRAT,1.0,no variation
+C6.DIS.behav_stated,2,1.0,1.0,1.0,1.0,EXPLICIT,1.0,no variation
+C6.DIS.info,2,0.0,-0.333,-0.333,0.0,COMPLETE,0.5,unreliable
+C6.DIS.info_stated,2,0.5,0.333,0.0,1.0,EXPLICIT,0.5,unreliable
+C6.BRI.present,150,0.98,0.561,-0.011,1.0,N,0.977,moderate
+C6.BRI.behav,2,1.0,1.0,1.0,1.0,STRAT,1.0,no variation
+C6.BRI.behav_stated,2,1.0,1.0,1.0,1.0,EXPLICIT,0.5,substantial
+C6.BRI.info,2,1.0,1.0,1.0,1.0,COMPLETE,1.0,no variation
+C6.BRI.info_stated,2,1.0,1.0,1.0,1.0,EXPLICIT,0.5,substantial
+C6.DES.present,150,0.96,0.482,-0.007,0.793,N,0.96,moderate
+C6.DES.behav,3,1.0,1.0,1.0,1.0,STRAT,1.0,no variation
+C6.DES.behav_stated,3,1.0,1.0,1.0,1.0,EXPLICIT,0.667,substantial
+C6.DES.info,3,0.333,0.0,-0.286,1.0,PARTIAL,0.5,unreliable
+C6.DES.info_stated,3,0.667,0.4,0.0,1.0,EXPLICIT,0.667,unreliable
+C6.OTH.present,150,0.967,0.649,0.269,0.906,N,0.95,substantial
+C6.OTH.behav,5,1.0,1.0,1.0,1.0,NONSTRAT,0.6,substantial
+C6.OTH.behav_stated,5,1.0,1.0,1.0,1.0,EXPLICIT,1.0,no variation
+C6.OTH.info,5,0.8,0.667,0.286,1.0,NA,0.6,substantial
+C6.OTH.info_stated,5,0.8,0.583,0.0,1.0,NA,0.7,moderate
