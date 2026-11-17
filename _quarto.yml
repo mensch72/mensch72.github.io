@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Jobst Heitzig · working notes"
+  site-url: https://mensch72.github.io
+  navbar:
+    left:
+      - href: index.qmd
+        text: Items
+      - href: about.qmd
+        text: About
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    html-math-method: mathjax

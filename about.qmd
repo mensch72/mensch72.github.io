@@ -1,0 +1,7 @@
+---
+title: "About"
+---
+
+Personal pages of Jobst Heitzig.
+Items here are not peer-reviewed.
+Each one carries a status line saying how mature it is, whether and how AI was used, and what has been verified.
