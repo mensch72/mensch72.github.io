@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Working notes",
+    "section": "",
+    "text": "Things I have worked on, many with substantial AI assistance, and of varying maturity. Each item states its status and how far its results have been checked.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nStatus\n\n\nCategories\n\n\n\n\n\n\n2026-08\n\n\nDoes the grand coalition form?\n\n\nAI-assisted · work in progress · Lean formalization under way\n\n\ngame theory, coalition formation, cooperative games\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2026-08-grand-coalition/index.html",
+    "href": "posts/2026-08-grand-coalition/index.html",
+    "title": "Does the grand coalition form?",
+    "section": "",
+    "text": "Status: AI-assisted work in progress\n\n\n\nThis paper was developed with substantial AI assistance. It is currently undergoing formalization in Lean 4, which has already exposed errors in earlier versions. Results, including ones stated as theorems, may still change.\nPreprint: arXiv:2608.17766 (v1 18 Aug 2026, v2 23 Aug 2026) · PDF"
+  },
+  {
+    "objectID": "posts/2026-08-grand-coalition/index.html#summary",
+    "href": "posts/2026-08-grand-coalition/index.html#summary",
+    "title": "Does the grand coalition form?",
+    "section": "Summary",
+    "text": "Summary\nPlayers repeatedly form and dissolve nested binding agreements and evaluate outcomes by discounted long-run payoffs. The paper asks whether the grand coalition persists once reached and whether it is eventually reached, and how the answer depends on the rule for sharing the surplus. See the arXiv abstract for the precise statements."
+  },
+  {
+    "objectID": "posts/2026-08-grand-coalition/index.html#citation",
+    "href": "posts/2026-08-grand-coalition/index.html#citation",
+    "title": "Does the grand coalition form?",
+    "section": "Citation",
+    "text": "Citation\nHeitzig, J. (2026) Does the grand coalition form? Persistence, arrival, and the role of the sharing rule in a dynamic process of nested binding agreements. arXiv preprint arXiv:2608.17766. Available at: https://doi.org/10.48550/arXiv.2608.17766."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Personal pages of Jobst Heitzig. Items here are not peer-reviewed. Each one carries a status line saying how mature it is, whether and how AI was used, and what has been verified."
+  }
+]
