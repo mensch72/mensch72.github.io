@@ -36,4 +36,4 @@ git checkout -- index.html
 
 Files whose names start with `_` are skipped by Quarto, which is why the first command keeps `CONTRIBUTING.md` out of the output.
 
-**Pages builds.** A push made from a Claude Code session (through the Claude GitHub app) did not trigger a GitHub Pages build. The cause has not been confirmed. If the site does not update within a few minutes of a push, trigger a build by hand: Settings → Pages, or `gh api -X POST repos/mensch72/mensch72.github.io/pages/builds`.
+**Which branch is live.** GitHub Pages builds from the branch `github-pages-live`, not from `main`. That branch mirrors `main`, with the same tree but separate commits. The evidence: both Pages builds on 2026-11-17 used its head, and its tree equals `main` at acb76b9. A push to `main` therefore does not change the site until `github-pages-live` is updated to `main`'s content.
