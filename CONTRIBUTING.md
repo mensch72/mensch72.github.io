@@ -37,3 +37,13 @@ git checkout -- index.html
 Files whose names start with `_` are skipped by Quarto, which is why the first command keeps `CONTRIBUTING.md` out of the output.
 
 **Which branch is live.** GitHub Pages builds from the branch `github-pages-live`, not from `main`. That branch mirrors `main`, with the same tree but separate commits. The evidence: both Pages builds on 2026-11-17 used its head, and its tree equals `main` at acb76b9. A push to `main` therefore does not change the site until `github-pages-live` is updated to `main`'s content.
+
+To publish, commit to `main` and push. Then add one commit on top of `github-pages-live` carrying `main`'s exact tree. This is a fast-forward, so no force-push is needed:
+
+```bash
+git fetch --depth=1 origin +github-pages-live:refs/remotes/origin/github-pages-live
+```
+
+```bash
+git push origin "$(git commit-tree "main^{tree}" -p origin/github-pages-live -m "Mirror main at $(git rev-parse --short main)")":refs/heads/github-pages-live
+```
