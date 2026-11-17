@@ -1,0 +1,16 @@
+venue,reason,count
+AAAI,ineligible on full text,2
+AAMAS,ineligible on full text,7
+COMSOC,ineligible on full text,4
+EC,ineligible on full text,6
+EC,unavailable,1
+GEB,duplicate,1
+GEB,ineligible on full text,4
+GEB,unavailable,1
+IJCAI,ineligible on full text,3
+JET,ineligible on full text,2
+JET,unavailable,2
+MSS,ineligible on full text,2
+MSS,unavailable,12
+SCW,ineligible on full text,7
+SCW,unavailable,11

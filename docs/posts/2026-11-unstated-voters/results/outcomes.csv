@@ -1,0 +1,17 @@
+measure,label,n,k,unweighted,weighted,ci_lo,ci_hi
+O0,Purely procedural: no welfare-type criteria in results and no claims beyond results,150,9,0.06,0.071,0.032,0.117
+O1,"Relation between submitted input and held preferences stated (DIST, IDJ or IDS), of papers referring to held preferences",147,99,0.673,0.694,0.625,0.76
+O1a,Input and held preferences explicitly distinguished (DIST),147,83,0.565,0.588,0.508,0.661
+O1b,"Reason given, among papers stating that input equals preferences",16,3,0.188,0.241,0.0,0.481
+O3,Welfare-type or interpretive claim resting on an unstated assumption (all eligible papers),150,73,0.487,0.481,0.409,0.555
+O3c,O3 among papers making welfare-type results or claims beyond results,141,73,0.518,0.518,0.446,0.592
+O3w,"Welfare-type criteria evaluated on inputs without stated relation to preferences, among papers with such criteria",101,42,0.416,0.404,0.313,0.498
+O3i,"Some assumption needed for claims beyond results unstated, among papers making such claims",133,61,0.459,0.452,0.374,0.531
+O4,"Sincerity stated, among papers with non-strategic analyses and held preferences",111,43,0.387,0.389,0.304,0.473
+O4r,Sincerity stated with a reason (same denominator),111,18,0.162,0.171,0.106,0.242
+O4u,"Post hoc: voters non-strategic in some analysis, without a stated reason (all eligible papers)",150,93,0.62,0.59,0.516,0.66
+O5,"Link between ordinal/approval inputs and utilities specified, where utility-type notions are used",62,53,0.855,0.833,0.731,0.928
+O5d,"Meaning of dichotomous preferences stated, where the term is used",12,6,0.5,0.444,0.172,0.762
+O2b,"Some stakeholder strategic while another is not, among papers with two or more acting types",33,19,0.576,0.564,0.397,0.712
+O2br,Reason given for that difference,19,8,0.421,0.456,0.227,0.696
+P,Paper states an explicitly procedural reading (C10.1),150,1,0.007,0.009,0.0,0.026

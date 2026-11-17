@@ -1,0 +1,18 @@
+item,n,agree,kappa
+derived:O0,150,0.947,0.403
+derived:O1,150,0.747,0.537
+derived:O1a,150,0.747,0.548
+derived:O1b,150,0.88,0.252
+derived:O3,150,0.707,0.429
+derived:O3c,150,0.68,0.415
+derived:O3w,150,0.813,0.72
+derived:O3i,150,0.633,0.394
+derived:O4,150,0.707,0.538
+derived:O4r,150,0.767,0.561
+derived:O4u,150,0.807,0.589
+derived:O5,150,0.807,0.616
+derived:O5d,150,0.967,0.749
+derived:O2b,150,0.86,0.615
+derived:O2br,150,0.913,0.57
+derived:P,150,1.0,1.0
+C0 (all coded papers),194,0.954,0.848

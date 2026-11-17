@@ -1,0 +1,83 @@
+---
+title: "Unstated voters: how recent voting papers state their behavioural assumptions"
+date: 2026-11-17
+status: "AI-assisted · draft · evidence quotes machine-checked; codes not yet checked by a human"
+categories: [social choice, computational social choice, voting, meta-research]
+---
+
+::: {.callout-warning appearance="simple"}
+## Status: AI-assisted draft
+
+This is a coding study of 150 voting papers from 2021–2025 and a 4-page note on its results.
+All screening, coding and adjudication was done by language models (Claude Opus 5.5 and Claude Sonnet 5.5) under my supervision.
+The evidence quotes were checked automatically against the paper texts (98.8 % found verbatim), but no code has yet been checked by a human: a hand-check of 15 papers is prepared but not done.
+:::
+
+**Note:** [PDF, 4 pages](unstated-voters-note.pdf) · **Data:** [dataset.xlsx](dataset.xlsx) (codes and evidence for all 150 papers) · **Code and full pipeline:** [github.com/mensch72/comsoc-rationality-review](https://github.com/mensch72/comsoc-rationality-review/tree/claude/wonderful-hopper-jsla1z) (branch `claude/wonderful-hopper-jsla1z`)
+
+## Summary
+
+My impression was that voting papers are rigorous inside their formal models but often leave the behavioural interpretation unstated.
+To test it, I drew a stratified random sample of 150 papers on voting from 2021–2025.
+The papers come from AAMAS, IJCAI, AAAI, EC, the COMSOC workshop, *Social Choice and Welfare*, *Games and Economic Behavior*, *Journal of Economic Theory* and *Mathematical Social Sciences*.
+
+Each paper was coded with a codebook that was frozen after a 10-paper pilot. The codebook asks:
+
+- how the paper relates submitted ballots to voters' preferences and utilities;
+- whether each type of agent is modelled as strategic, and what it knows;
+- whether welfare or real-world claims depend on assumptions the paper does not state.
+
+Two model runs coded every paper independently, and a third adjudicated their disagreements.
+Estimates are design-weighted, with stratified-bootstrap confidence intervals.
+
+The results support the impression only in part.
+
+## Main results
+
+The figures below are design-weighted, with 95 % CIs in brackets.
+
+- **About 60 % of papers treat voters as sincere in at least one analysis without giving a reason** (59 % [52–66]). Most of them do not state the assumption at all. The figure barely depends on which coder is used (57–62 %).
+- **About half make a welfare or real-world claim that rests on an assumption they do not state** (48 % [41–56]). Typically the missing assumption is that submitted ballots reflect what voters hold. This figure does depend on the coder: 45 % with one coder alone, 66 % with the other.
+- **Most papers do say how ballots relate to preferences** (69 % [63–76]). Where utilities appear alongside ordinal or approval ballots, 83 % [73–92] define the link. Treating preferences, ballots and utilities as one object is therefore a minority practice, concentrated in algorithmic and axiomatic papers.
+- **Purely procedural papers are rare** (7 %). Only 1 paper in 150 says explicitly that it takes a procedural reading.
+
+Some items fall below κ = 0.40 between the two coders, and the note marks them as unreliable.
+It also gives the results by venue type and paper type, six named examples of good practice, and five randomly drawn, anonymised examples of claims that rest on unstated assumptions.
+It includes a calibration case (one of my own papers) and a short reporting checklist.
+
+## Files and reproduction
+
+- [unstated-voters-note.pdf](unstated-voters-note.pdf): the note.
+- [dataset.xlsx](dataset.xlsx): one row per paper, with bibliographic data, the open version coded, codes, locations, quotes of at most 12 words, and weights.
+- Results tables (CSV):
+  - Estimates: [outcomes](results/outcomes.csv), [by venue type](results/by_venue_type.csv), [by paper type](results/by_paper_type.csv), [stakeholders](results/stakeholders.csv).
+  - Reliability: [items](results/reliability.csv), [derived measures](results/reliability_derived.csv), [coder sensitivity](results/coder_sensitivity.csv).
+  - Sample: [replacements](results/replacements.csv), [eligibility rates](results/eligibility_rate.csv).
+- [scripts.zip](scripts.zip): the sampling, coding, merge, quote-check and analysis scripts (Python 3; the analysis needs `openpyxl`).
+
+The scripts expect the layout of the study repository, which also holds the protocol, the codebook, the frame, the sample and all codings.
+
+To recompute every estimate, CI and reliability figure, and the dataset, from the final codings:
+
+```bash
+git clone -b claude/wonderful-hopper-jsla1z https://github.com/mensch72/comsoc-rationality-review
+```
+
+```bash
+cd comsoc-rationality-review && python3 scripts/analyze.py
+```
+
+The coder-sensitivity figures come from re-running `analyze.py` with the final codings replaced by pass A's or pass B's codings.
+
+Re-coding from scratch is a heavier job:
+
+- It needs the paper texts, which are not redistributed. The dataset gives the URL of each open version used.
+- It needs access to the models through OpenRouter (`scripts/api_code.py`).
+- Model outputs will not be identical on a re-run.
+
+## Citation
+
+Heitzig, J. (2026) *Unstated voters: how recent voting papers state their behavioural assumptions*. Draft note. Available at: <https://mensch72.github.io/posts/2026-11-unstated-voters/>.
+
+Calibration case:
+Heitzig, J., Simmons, F.W. and Constantino, S.M. (2024) 'Fair group decisions via non-deterministic proportional consensus', *Social Choice and Welfare*, 64(1–2), pp. 345–371. Available at: <https://doi.org/10.1007/s00355-024-01524-3>.

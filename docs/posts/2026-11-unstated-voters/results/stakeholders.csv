@@ -1,0 +1,8 @@
+type,present,strat_or_mixed,nonstrat,behav_ns,behav_explicit,behav_explicit_share,info_explicit_among_strategic,info_explicit_share,info_not_specified_among_strategic
+VOT,144,57,87,0,93,0.646,29,0.509,20
+CAN,11,10,1,0,10,0.909,10,1.0,0
+ORG,7,6,1,0,7,1.0,4,0.667,0
+DIS,2,2,0,0,2,1.0,1,0.5,0
+BRI,4,4,0,0,3,0.75,2,0.5,0
+DES,7,6,1,0,5,0.714,5,0.833,0
+OTH,6,2,4,0,6,1.0,1,0.5,1
