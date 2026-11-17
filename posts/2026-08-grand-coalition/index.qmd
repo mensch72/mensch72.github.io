@@ -1,0 +1,28 @@
+---
+title: "Does the grand coalition form?"
+subtitle: "Persistence, arrival, and the role of the sharing rule in a dynamic process of nested binding agreements"
+date: 2026-08-18
+date-modified: 2026-08-23
+status: "AI-assisted · work in progress · Lean formalization under way"
+categories: [game theory, coalition formation, cooperative games]
+---
+
+::: {.callout-warning appearance="simple"}
+## Status: AI-assisted work in progress
+
+This paper was developed with substantial AI assistance.
+It is currently undergoing formalization in Lean 4, which has already exposed errors in earlier versions.
+Results, including ones stated as theorems, may still change.
+:::
+
+**Preprint:** [arXiv:2608.17766](https://arxiv.org/abs/2608.17766) (v1 18 Aug 2026, v2 23 Aug 2026) · [PDF](https://arxiv.org/pdf/2608.17766)
+
+## Summary
+
+Players repeatedly form and dissolve nested binding agreements and evaluate outcomes by discounted long-run payoffs.
+The paper asks whether the grand coalition persists once reached and whether it is eventually reached, and how the answer depends on the rule for sharing the surplus.
+See the arXiv abstract for the precise statements.
+
+## Citation
+
+Heitzig, J. (2026) *Does the grand coalition form? Persistence, arrival, and the role of the sharing rule in a dynamic process of nested binding agreements*. arXiv preprint arXiv:2608.17766. Available at: <https://doi.org/10.48550/arXiv.2608.17766>.
