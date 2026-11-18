@@ -1,0 +1,101 @@
+---
+title: "Do LLM agents choose MaxParC? A replication of our voting lab experiment with open-weight models"
+date: 2026-11-18
+status: "AI-assisted · draft · analysis re-run from the archived data; code, coding and text not checked by a human"
+categories: [social choice, voting, experiments, LLM agents]
+---
+
+::: {.callout-warning appearance="simple"}
+## Status: AI-assisted draft
+
+This item replicates the lab experiment from our MaxParC paper with 1,800 LLM participants instead of humans. Claude (Opus 5.5) implemented, ran, analysed and wrote it up under my supervision, with substantial AI assistance at every step.
+What has been checked: the code passes its unit tests, and the full analysis reproduces from the archived round data. What has not: no human has reviewed the code, the qualitative coding (done by AI coders) or the numbers in the report.
+:::
+
+**Report:** [PDF, 9 pages](report.pdf) · **Data:** [participants.csv](participants.csv) · [analysis.json](analysis.json) · [data.tar.gz](data.tar.gz) · **Code:** [code.zip](code.zip)
+
+## Summary
+
+In the paper's lab experiment, people played 8 rounds of plurality voting and 8 rounds of MaxParC. They then chose which method to use for two more rounds.
+32 % chose MaxParC. The paper's rational benchmark is 44.8 %.
+
+The replication asks what LLM agents do in the same experiment.
+Each participant is one conversation with one model through OpenRouter. The participant text, session flow, payoffs, comprehension checks and exclusion rules follow the original.
+Participants are unpaid, are not shown any method names, and get no time limit.
+The study uses six open-weight models with 300 participants each:
+
+- DeepSeek V4.1 Flash
+- Qwen 3.8 Flash
+- Gemma 4 31B
+- gpt-oss-120b
+- Nemotron 3.5 Super
+- Muse Glimmer 30B
+
+The design and the analysis plan were fixed before the main run.
+Only the low-inequality treatment was run. In the high-inequality treatment the full compromise is worse than the random-ballot lottery for the two minority voters (24 and 12 points against 36), so the equilibrium the benchmark assumes does not exist there.
+
+## Main results
+
+Of the 1,800 participants, 1,678 passed all checks.
+
+| | chose MaxParC | 95 % CI |
+|---|---|---|
+| Gemma 4 31B | 72.0 % | 66.6–77.0 |
+| DeepSeek V4.1 Flash | 55.6 % | 49.7–61.4 |
+| Muse Glimmer 30B | 53.5 % | 46.8–60.1 |
+| gpt-oss-120b | 46.7 % | 40.5–53.0 |
+| Qwen 3.8 Flash | 42.5 % | 36.8–48.3 |
+| Nemotron 3.5 Super | 36.1 % | 30.7–41.8 |
+| **all six models** | **51.1 %** | 48.7–53.5 (37.9–64.2 across models) |
+| humans (paper, both treatments) | 32 % | 29–36 |
+
+- **More often than humans and the benchmark.** The models chose MaxParC more often than the paper's humans, and slightly more often than the rational benchmark (44.8 %; 44.2 % in my re-derivation for this treatment). They differ strongly among themselves (χ² test, p ≈ 10⁻¹⁸).
+- **They choose by their own realised points.** In 84 % of cases the choice follows the participant's own realised points. Once those are controlled for, the assigned advantage value has no further effect, which was not so for the humans. Risk aversion has no effect either.
+- **Stated reasons.** In a coded sample of 120 reasoning traces, the most common primary reason is "my own points so far" (67). Next come strategic reasoning about the participant's role (22) and fairness (18, almost all from Gemma).
+- **They rarely use the safe conditional commitment.** The commitment the mechanism is built on is giving the full compromise a rating of 1–20 ("approve only if all approve"). Only 1 % of MaxParC ballots do this, although 99 % of participants describe the rule correctly when asked afterwards. Most models rate only their favourite; Gemma approves the compromise unconditionally.
+- **The compromise rarely won.** The full compromise won in only 15 % of MaxParC rounds. MaxParC and plurality voting paid the same on average (36.1 vs 36.2 points per round), the tie the payoff table predicts for this treatment.
+
+The [report](report.pdf) covers the per-model tests, the logit and rating regressions next to the paper's human estimates, the deviations from the original design, and the limitations. The limitations are:
+
+- the participants are unpaid;
+- the 300 copies of one model are not independent;
+- the models may know the paper or the mechanism;
+- the pooled value depends on which models are in the pool.
+
+## Files and reproduction
+
+- [report.pdf](report.pdf): full results, deviations and limitations.
+- [participants.csv](participants.csv): one row per participant (model, choice, checks, attitudes, realised pay, post-debrief answers).
+- [analysis.json](analysis.json): every estimate in the report.
+- [choice_reasoning_coded.jsonl](choice_reasoning_coded.jsonl): qualitative codes and quotes for the 120 sampled free choices.
+- [data.tar.gz](data.tar.gz) (3 MB): per-round records of all sessions, with every ballot and raw answer. The complete API logs, with full reasoning text for all 44,137 calls, are 724 MB and not included here.
+- [code.zip](code.zip): experiment and analysis code (Python 3), the analysis plans, the model pools, and tests.
+
+To recompute every estimate from the archived data, unpack both archives into one folder:
+
+```bash
+unzip code.zip && tar xzf data.tar.gz
+```
+
+```bash
+pip install -r requirements.txt
+```
+
+```bash
+python run.py analyze --run main-or6
+```
+
+This writes `runs/main-or6/analysis.md` and `analysis.json`; only the API-cost figures stay empty without the logs.
+
+Re-running the experiment needs an OpenRouter API key and cost USD 75. Model outputs will not be identical on a re-run:
+
+```bash
+python run.py main --run main-or6 --pool pools/main6.txt --treatments low --sessions 60 --n 30 --post-questions --budget 90
+```
+
+## Citation
+
+Heitzig, J. (2026) *Do LLM agents choose MaxParC? A replication of our voting lab experiment with open-weight models*. Draft note. Available at: <https://mensch72.github.io/posts/2026-11-maxparc-llm-replication/>.
+
+Original study:
+Heitzig, J., Simmons, F.W. and Constantino, S.M. (2024) 'Fair group decisions via non-deterministic proportional consensus', *Social Choice and Welfare*, 64(1–2), pp. 345–371. Available at: <https://doi.org/10.1007/s00355-024-01524-3>.
