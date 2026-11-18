@@ -15,7 +15,7 @@ The inequalities were tested numerically on random finite instances (20,000 each
 The propositions that derive functional forms from axioms (prevention forms, aggregation without anonymity) are stated with proof sketches only.
 :::
 
-**Note:** [PDF, 13 pages](fleet-steerability-note.pdf) · **Source and test scripts:** [source.zip](source.zip)
+**Note:** [PDF, 14 pages](fleet-steerability-note.pdf) · **Source and test scripts:** [source.zip](source.zip)
 
 ## Summary
 
@@ -114,6 +114,20 @@ The uncontrolled power $U=2^{I_{\mathcal R}}-2^{L}$ is the part of the robots' e
 
 The anonymous aggregate of the per-robot values $S^{\mathrm t}_r=L_r-I_r$ equals the non-anonymous aggregate above with $\kappa'=1$ and $S_r$ replaced by $L_r$.
 A robot whose behaviour does not affect the goals has $S^{\mathrm t}_r=0$ and does not lower this fleet value, however unsteerable it is.
+
+## Use as a constraint on an AI system
+
+The note ends with an assessment, without results, of the following design: an AI system that acts like a regularised assistance-game agent but must not take actions that lower the long-term aggregate human power $L$ of Heitzig and Potham (2026) or the aggregate steerability.
+
+- **The two constraints are not redundant.** $L$ rewards the overseer's capability to make the robots do things but gives no floor on the least steerable robot. Prevention steerability with small $\zeta'$ supplies that floor.
+- **What the simplified metric measures.** For $\zeta'\to0$ it is the reliability of a veto channel along worst-case paths. With a working stop command every action is preventable and $S_r\approx0$. The constraint then forbids moving to states where the command works less reliably: disabling the channel, incapacitating the overseer, self-modification, creating subagents that cannot be stopped. It does not measure how finely the overseer can direct the robot.
+- **Stationarity.** In a finite-horizon model $S_r$ rises as the horizon shrinks, so "do not lower $S_r$" needs a stationary definition. A candidate is the discounted recursion $\log_2 M(s)=\min_{a_r}\big[\log_2 q(s,a_r)+\gamma'\min_{s'}\log_2 M(s')\big]$, whose properties have not been worked out.
+- **Regularisation is confounded with responsiveness.** A stochastic policy obtains moderate prevention probabilities without responding to the overseer.
+- **Certainty lowers steerability.** An assistance-game agent responds to the overseer only while it is uncertain about goals. The constraint is easy to satisfy only if the policy contains a committed response to a veto, which then becomes a structural requirement that the constraint protects.
+- **Granularity.** Prevention goals should refer to classes of actions with similar effects and to a time window in which the overseer can react.
+- **Overseer model.** With a boundedly rational, goal-conditioned overseer, the myopic choice in the recursion is a behavioural assumption and no longer an approximation.
+- **Feasibility.** "Never lower" can be infeasible, and the two constraints can conflict. A tolerance or an ordering is needed, and it has to be decided whether "lower" compares successor states with the current state or actions with each other.
+- **One overseer.** A robot fully steerable by one overseer can be used against everyone else. Only the constraint on $L$ guards against that.
 
 ## Limitations
 
