@@ -183,6 +183,7 @@ window.Quarto = {
   <li><a href="#joint-and-individual-attainment-steerability" id="toc-joint-and-individual-attainment-steerability" class="nav-link" data-scroll-target="#joint-and-individual-attainment-steerability">Joint and individual attainment steerability</a></li>
   <li><a href="#human-power-robot-power-and-steerability" id="toc-human-power-robot-power-and-steerability" class="nav-link" data-scroll-target="#human-power-robot-power-and-steerability">Human power, robot power and steerability</a></li>
   <li><a href="#targeted-steerability" id="toc-targeted-steerability" class="nav-link" data-scroll-target="#targeted-steerability">Targeted steerability</a></li>
+  <li><a href="#use-as-a-constraint-on-an-ai-system" id="toc-use-as-a-constraint-on-an-ai-system" class="nav-link" data-scroll-target="#use-as-a-constraint-on-an-ai-system">Use as a constraint on an AI system</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#files-and-reproduction" id="toc-files-and-reproduction" class="nav-link" data-scroll-target="#files-and-reproduction">Files and reproduction</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -238,7 +239,7 @@ Status: AI-assisted sketch
 <p>The definitions, statements and proofs in this note were drafted by Claude (Fable 5.2) in one conversation with me, starting from my questions. No human has checked the proofs yet. The inequalities were tested numerically on random finite instances (20,000 each for the attainment and power results, 3,000 each for the prevention results), and the worked examples were recomputed by the same scripts. The propositions that derive functional forms from axioms (prevention forms, aggregation without anonymity) are stated with proof sketches only.</p>
 </div>
 </div>
-<p><strong>Note:</strong> <a href="fleet-steerability-note.pdf">PDF, 13 pages</a> · <strong>Source and test scripts:</strong> <a href="source.zip">source.zip</a></p>
+<p><strong>Note:</strong> <a href="fleet-steerability-note.pdf">PDF, 14 pages</a> · <strong>Source and test scripts:</strong> <a href="source.zip">source.zip</a></p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>Abel et al.&nbsp;(2025) call the influence of observations on an agent’s actions <em>plasticity</em> and define it by a directed-information quantity. The note asks what the axiomatic approach of Heitzig and Potham (2026) to human power gives for the mirrored question: how well can one overseer steer each of several robots with fixed policies? The standard steerability goal is to <em>prevent</em> a certain robot action. Goals to make a robot do something (attainment goals) are a variant, used to relate steerability to the overseer’s power over the world and to the robots’ own power.</p>
@@ -307,6 +308,21 @@ Status: AI-assisted sketch
 <p><span class="math display">\[S^{\mathrm t}=L-I_{\mathcal R}=\log_2\sum_g w_g\,t_g^\zeta\le 0,\qquad w_g\propto v_g^\zeta,\]</span></p>
 <p>and it gives a triangle inequality in bits, <span class="math inline">\(I_h\ge L=I_{\mathcal R}+S^{\mathrm t}\)</span>. The uncontrolled power <span class="math inline">\(U=2^{I_{\mathcal R}}-2^{L}\)</span> is the part of the robots’ effective number of goals that the overseer cannot direct, and <span class="math inline">\(0\le U\le|\mathcal B|-2^{S^+_{\mathcal R}}\)</span>.</p>
 <p>The anonymous aggregate of the per-robot values <span class="math inline">\(S^{\mathrm t}_r=L_r-I_r\)</span> equals the non-anonymous aggregate above with <span class="math inline">\(\kappa'=1\)</span> and <span class="math inline">\(S_r\)</span> replaced by <span class="math inline">\(L_r\)</span>. A robot whose behaviour does not affect the goals has <span class="math inline">\(S^{\mathrm t}_r=0\)</span> and does not lower this fleet value, however unsteerable it is.</p>
+</section>
+<section id="use-as-a-constraint-on-an-ai-system" class="level2">
+<h2 class="anchored" data-anchor-id="use-as-a-constraint-on-an-ai-system">Use as a constraint on an AI system</h2>
+<p>The note ends with an assessment, without results, of the following design: an AI system that acts like a regularised assistance-game agent but must not take actions that lower the long-term aggregate human power <span class="math inline">\(L\)</span> of Heitzig and Potham (2026) or the aggregate steerability.</p>
+<ul>
+<li><strong>The two constraints are not redundant.</strong> <span class="math inline">\(L\)</span> rewards the overseer’s capability to make the robots do things but gives no floor on the least steerable robot. Prevention steerability with small <span class="math inline">\(\zeta'\)</span> supplies that floor.</li>
+<li><strong>What the simplified metric measures.</strong> For <span class="math inline">\(\zeta'\to0\)</span> it is the reliability of a veto channel along worst-case paths. With a working stop command every action is preventable and <span class="math inline">\(S_r\approx0\)</span>. The constraint then forbids moving to states where the command works less reliably: disabling the channel, incapacitating the overseer, self-modification, creating subagents that cannot be stopped. It does not measure how finely the overseer can direct the robot.</li>
+<li><strong>Stationarity.</strong> In a finite-horizon model <span class="math inline">\(S_r\)</span> rises as the horizon shrinks, so “do not lower <span class="math inline">\(S_r\)</span>” needs a stationary definition. A candidate is the discounted recursion <span class="math inline">\(\log_2 M(s)=\min_{a_r}\big[\log_2 q(s,a_r)+\gamma'\min_{s'}\log_2 M(s')\big]\)</span>, whose properties have not been worked out.</li>
+<li><strong>Regularisation is confounded with responsiveness.</strong> A stochastic policy obtains moderate prevention probabilities without responding to the overseer.</li>
+<li><strong>Certainty lowers steerability.</strong> An assistance-game agent responds to the overseer only while it is uncertain about goals. The constraint is easy to satisfy only if the policy contains a committed response to a veto, which then becomes a structural requirement that the constraint protects.</li>
+<li><strong>Granularity.</strong> Prevention goals should refer to classes of actions with similar effects and to a time window in which the overseer can react.</li>
+<li><strong>Overseer model.</strong> With a boundedly rational, goal-conditioned overseer, the myopic choice in the recursion is a behavioural assumption and no longer an approximation.</li>
+<li><strong>Feasibility.</strong> “Never lower” can be infeasible, and the two constraints can conflict. A tolerance or an ordering is needed, and it has to be decided whether “lower” compares successor states with the current state or actions with each other.</li>
+<li><strong>One overseer.</strong> A robot fully steerable by one overseer can be used against everyone else. Only the constraint on <span class="math inline">\(L\)</span> guards against that.</li>
+</ul>
 </section>
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
