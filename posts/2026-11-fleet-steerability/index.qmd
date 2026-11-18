@@ -70,4 +70,4 @@ Issa, I., Wagner, A.B. and Kamath, S. (2020) 'An Operational Approach to Informa
 
 ## Citation
 
-Heitzig, J. (2026) *Steerability of a robot fleet by one overseer: mirrored axioms and their relation to human power*. Working note, 18 November 2026. Available at: <https://mensch72.github.io/docs/posts/2026-11-fleet-steerability/>.
+Heitzig, J. (2026) *Steerability of a robot fleet by one overseer: mirrored axioms and their relation to human power*. Working note, 18 November 2026. Available at: <https://mensch72.github.io/posts/2026-11-fleet-steerability/>.
