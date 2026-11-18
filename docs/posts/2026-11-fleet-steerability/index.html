@@ -176,8 +176,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#main-points" id="toc-main-points" class="nav-link" data-scroll-target="#main-points">Main points</a></li>
-  <li><a href="#added-on-18-november-robot-power-targeted-steerability-weights" id="toc-added-on-18-november-robot-power-targeted-steerability-weights" class="nav-link" data-scroll-target="#added-on-18-november-robot-power-targeted-steerability-weights">Added on 18 November: robot power, targeted steerability, weights</a></li>
+  <li><a href="#quantities" id="toc-quantities" class="nav-link" data-scroll-target="#quantities">Quantities</a></li>
+  <li><a href="#axioms-and-functional-forms" id="toc-axioms-and-functional-forms" class="nav-link" data-scroll-target="#axioms-and-functional-forms">Axioms and functional forms</a></li>
+  <li><a href="#joint-and-individual-steerability" id="toc-joint-and-individual-steerability" class="nav-link" data-scroll-target="#joint-and-individual-steerability">Joint and individual steerability</a></li>
+  <li><a href="#human-power-robot-power-and-steerability" id="toc-human-power-robot-power-and-steerability" class="nav-link" data-scroll-target="#human-power-robot-power-and-steerability">Human power, robot power and steerability</a></li>
+  <li><a href="#targeted-steerability" id="toc-targeted-steerability" class="nav-link" data-scroll-target="#targeted-steerability">Targeted steerability</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#files-and-reproduction" id="toc-files-and-reproduction" class="nav-link" data-scroll-target="#files-and-reproduction">Files and reproduction</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -212,12 +215,6 @@ window.Quarto = {
     </div>
   </div>
   
-    <div>
-    <div class="quarto-title-meta-heading">Modified</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date-modified">November 18, 2026</p>
-    </div>
-  </div>
     
   </div>
   
@@ -242,48 +239,49 @@ Status: AI-assisted sketch
 <p><strong>Note:</strong> <a href="fleet-steerability-note.pdf">PDF, 8 pages</a> · <strong>Source and test script:</strong> <a href="source.zip">source.zip</a></p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>Abel et al.&nbsp;(2025) call the influence of observations on an agent’s actions <em>plasticity</em> and define it by a directed-information quantity. The note asks what the axiomatic approach of Heitzig and Potham (2026) to human power gives for the mirrored question: how well can one overseer steer each of several robots with fixed policies?</p>
-<p>The steerability of robot <span class="math inline">\(r\)</span> and the joint steerability of the fleet <span class="math inline">\(\mathcal R\)</span> are</p>
-<p><span class="math display">\[S_r=\log_2\sum_{g\in\mathcal G_r}p(g)^\zeta,\qquad S_{\mathcal R}=\log_2\sum_{g\in\mathcal G_{\mathcal R}}p(g)^\zeta,\]</span></p>
-<p>where <span class="math inline">\(p(g)\)</span> is the largest probability with which the overseer can bring about the behaviour goal <span class="math inline">\(g\)</span>, <span class="math inline">\(\mathcal G_r\)</span> is a partition of robot <span class="math inline">\(r\)</span>’s behaviours, and <span class="math inline">\(\mathcal G_{\mathcal R}\)</span> consists of the conjunctions. The fleet-level aggregate is</p>
-<p><span class="math display">\[F=-\tfrac1\xi\log_2\sum_r 2^{-\xi S_r},\qquad \min_r S_r-\tfrac{\log_2 n}{\xi}\le F\le\min_r S_r .\]</span></p>
+<p>Abel et al.&nbsp;(2025) call the influence of observations on an agent’s actions <em>plasticity</em> and define it by a directed-information quantity. The note asks what the axiomatic approach of Heitzig and Potham (2026) to human power gives for the mirrored question: how well can one overseer steer each of several robots with fixed policies? It then relates three quantities: the overseer’s power over the world, the robots’ own power, and the robots’ steerability.</p>
 </section>
-<section id="main-points" class="level2">
-<h2 class="anchored" data-anchor-id="main-points">Main points</h2>
+<section id="quantities" class="level2">
+<h2 class="anchored" data-anchor-id="quantities">Quantities</h2>
+<p>Let <span class="math inline">\(p(g)\)</span> be the largest probability with which the overseer can bring about a behaviour goal <span class="math inline">\(g\)</span>. With <span class="math inline">\(\mathcal G_r\)</span> a partition of robot <span class="math inline">\(r\)</span>’s behaviours and <span class="math inline">\(\mathcal G_{\mathcal R}\)</span> the conjunctions, the steerability of robot <span class="math inline">\(r\)</span> and the joint steerability of the fleet <span class="math inline">\(\mathcal R\)</span> are</p>
+<p><span class="math display">\[S_r=\log_2\sum_{g\in\mathcal G_r}p(g)^\zeta,\qquad S_{\mathcal R}=\log_2\sum_{g\in\mathcal G_{\mathcal R}}p(g)^\zeta .\]</span></p>
+<p>For world goals <span class="math inline">\(g\)</span>, let <span class="math inline">\(p_h(g)\)</span> be the overseer’s capability, <span class="math inline">\(q_g\)</span> the fleet’s own capability if it pursued <span class="math inline">\(g\)</span> as a rational coalition, and <span class="math inline">\(t_g\)</span> the largest probability with which the overseer can make the fleet behave as it would if it pursued <span class="math inline">\(g\)</span>. Human power, robot power and instructable power are</p>
+<p><span class="math display">\[I_h=\log_2\sum_g p_h(g)^\zeta,\qquad I_{\mathcal R}=\log_2\sum_g q_g^\zeta,\qquad L=\log_2\sum_g (q_g t_g)^\zeta .\]</span></p>
+<p>The overseer is assumed to affect the world goals only through the robots’ joint behaviour.</p>
+</section>
+<section id="axioms-and-functional-forms" class="level2">
+<h2 class="anchored" data-anchor-id="axioms-and-functional-forms">Axioms and functional forms</h2>
 <ul>
-<li><strong>The power axioms carry over by renaming</strong> and give the same functional forms with the same six parameters.</li>
-<li><strong>A null axiom contradicts Reliability Preference.</strong> If all open-loop robots must have the same steerability, the exponent must be <span class="math inline">\(\zeta=1\)</span>, which the power axioms exclude. For one-shot commands and singleton goals, the <span class="math inline">\(\zeta=1\)</span> measure is the maximal leakage of Issa et al.&nbsp;(2020).</li>
+<li><strong>The power axioms carry over by renaming</strong> and give the forms above with the same six parameters. The fleet-level aggregate is <span class="math display">\[F=-\tfrac1\xi\log_2\sum_r 2^{-\xi S_r},\qquad \min_r S_r-\tfrac{\log_2 n}{\xi}\le F\le\min_r S_r .\]</span></li>
+<li><strong>A null axiom contradicts Reliability Preference.</strong> If all robots that ignore the overseer must have the same steerability, the exponent must be <span class="math inline">\(\zeta=1\)</span>, which the power axioms exclude. For one-shot commands and singleton goals, the <span class="math inline">\(\zeta=1\)</span> measure is the maximal leakage of Issa et al.&nbsp;(2020).</li>
 <li><strong>Least-robot focus.</strong> Losing one bit of one robot’s steerability is uncompensable by <span class="math inline">\(k\)</span> other robots if and only if <span class="math inline">\(k\le 2^\xi-1\)</span>. Uncompensability for all fleet sizes forces <span class="math inline">\(F=\min_r S_r\)</span> and gives up strict monotonicity.</li>
-<li><strong>Granularity.</strong> <span class="math inline">\(F\)</span> is invariant under replacing a group of robots by a representative with their aggregate steerability. No such <span class="math inline">\(F\)</span> is invariant under merging robots into a coalition with joint behaviours. That invariance forces <span class="math inline">\(F=S_{\mathcal R}\)</span>, which is a sum for independent robots and violates inequality aversion.</li>
-<li><strong>Joint versus individual steerability.</strong> <span class="math inline">\(S_{\mathcal R}=\sum_r S_r\)</span> for independently commanded robots and <span class="math inline">\(S_{\mathcal R}\le\sum_r S_r\)</span> under independence. Under a command bottleneck <span class="math inline">\(S_{\mathcal R}\)</span> is much smaller. With shared randomness it can exceed the sum.</li>
-<li><strong>Human power and steerability.</strong> If the overseer affects the world goals only through the robots, via a deterministic map with at most <span class="math inline">\(m\)</span> joint behaviour cells per world goal, then for <span class="math inline">\(\zeta\ge1\)</span></li>
-</ul>
-<p><span class="math display">\[S_{\mathcal R}-\log_2 m\;\le\;I_h\;\le\;S_{\mathcal R}+(\zeta-1)\log_2 m .\]</span></p>
-<ul>
-<li><strong>Consequences.</strong> Under independence and <span class="math inline">\(\zeta=1\)</span>, human power <span class="math inline">\(I_h\)</span> implies that some robot has <span class="math inline">\(S_r\ge I_h/n\)</span>. It implies no lower bound on the least steerable robot or on <span class="math inline">\(F\)</span>. In the other direction, a high <span class="math inline">\(F\)</span> gives human power only if the robots are also jointly steerable and their behaviour matters for the world goals.</li>
+<li><strong>Granularity.</strong> <span class="math inline">\(F\)</span> is invariant under replacing a group of robots by a representative with their aggregate steerability. It is not invariant under merging robots into a coalition with joint behaviours. That invariance would force <span class="math inline">\(F=S_{\mathcal R}\)</span>, which is a sum for independent robots and violates inequality aversion.</li>
+<li><strong>Without anonymity of robots</strong>, the aggregate becomes <span class="math inline">\(F=-\tfrac1\xi\log_2\sum_r 2^{-\xi(S_r-\omega_r)}\)</span> with robot-specific offsets <span class="math inline">\(\omega_r\)</span>, a soft minimum of steerability surplus over a requirement. Unweighted inequality aversion forces equal offsets. If the offset depends on a robot only through its power <span class="math inline">\(I_r\)</span>, single-robot composition additivity gives <span class="math inline">\(\omega_r=\kappa I_r\)</span> with one new parameter <span class="math inline">\(\kappa\ge0\)</span>.</li>
 </ul>
 </section>
-<section id="added-on-18-november-robot-power-targeted-steerability-weights" class="level2">
-<h2 class="anchored" data-anchor-id="added-on-18-november-robot-power-targeted-steerability-weights">Added on 18 November: robot power, targeted steerability, weights</h2>
-<p>These parts allow a stochastic outcome, with <span class="math inline">\(q_g\)</span> the fleet’s own capability for world goal <span class="math inline">\(g\)</span> and <span class="math inline">\(I_{\mathcal R}=\log_2\sum_g q_g^\zeta\)</span> its power as a rational coalition.</p>
+<section id="joint-and-individual-steerability" class="level2">
+<h2 class="anchored" data-anchor-id="joint-and-individual-steerability">Joint and individual steerability</h2>
+<p><span class="math inline">\(S_{\mathcal R}=\sum_r S_r\)</span> for independently commanded robots, and <span class="math inline">\(S_{\mathcal R}\le\sum_r S_r\)</span> whenever the robots’ behaviours are independent under every overseer strategy. Under a command bottleneck <span class="math inline">\(S_{\mathcal R}\)</span> is much smaller than the sum. With randomness shared between robots it can exceed the sum. The individual steerabilities therefore do not determine the joint one.</p>
+</section>
+<section id="human-power-robot-power-and-steerability" class="level2">
+<h2 class="anchored" data-anchor-id="human-power-robot-power-and-steerability">Human power, robot power and steerability</h2>
 <ul>
-<li><strong>Triangle inequality in effective numbers, none in bits.</strong> <span class="math inline">\(I_h\le I_{\mathcal R}\)</span> always, and for <span class="math inline">\(\zeta\ge1\)</span></li>
+<li><strong>Bounds through joint steerability.</strong> If the outcome is a deterministic function of the joint behaviour with at most <span class="math inline">\(m\)</span> behaviour cells per world goal, then for <span class="math inline">\(\zeta\ge1\)</span> <span class="math display">\[S_{\mathcal R}-\log_2 m\;\le\;I_h\;\le\;S_{\mathcal R}+(\zeta-1)\log_2 m .\]</span></li>
+<li><strong>Power implies total, not least, steerability.</strong> Under independence and <span class="math inline">\(\zeta=1\)</span>, some robot has <span class="math inline">\(S_r\ge I_h/n\)</span>. Human power implies no lower bound on the least steerable robot or on <span class="math inline">\(F\)</span>. In the other direction, a high <span class="math inline">\(F\)</span> gives human power only if the robots are also jointly steerable and their behaviour matters for the world goals.</li>
+<li><strong>Robot power bounds human power.</strong> <span class="math inline">\(I_h\le I_{\mathcal R}\)</span>, and for <span class="math inline">\(\zeta=1\)</span> also <span class="math inline">\(I_h\le\min(I_{\mathcal R},S_{\mathcal R})\)</span>.</li>
+<li><strong>A triangle inequality in effective numbers of goals.</strong> For <span class="math inline">\(\zeta\ge1\)</span> and singleton behaviour goals, <span class="math display">\[|\mathcal B|-2^{I_h}\;\le\;\big(|\mathcal B|-2^{I_{\mathcal R}}\big)+\big(|\mathcal B|-2^{S_{\mathcal R}}\big),\]</span> where <span class="math inline">\(\mathcal B\)</span> is the set of joint behaviours. The corresponding inequality in bits fails, because <span class="math inline">\(S_{\mathcal R}\)</span> counts steerable behaviours whether or not the robots’ power runs through them.</li>
 </ul>
-<p><span class="math display">\[|\mathcal B|-2^{I_h}\;\le\;\big(|\mathcal B|-2^{I_{\mathcal R}}\big)+\big(|\mathcal B|-2^{S_{\mathcal R}}\big).\]</span></p>
-<p>The corresponding inequality in bits fails, because <span class="math inline">\(S_{\mathcal R}\)</span> counts steerable behaviours whether or not the robots’ power runs through them.</p>
-<ul>
-<li><strong>Targeted steerability.</strong> Let <span class="math inline">\(t_g\)</span> be the largest probability with which the overseer can make the fleet behave as it would if it pursued <span class="math inline">\(g\)</span>. With the instructable power <span class="math inline">\(L=\log_2\sum_g(q_gt_g)^\zeta\)</span>,</li>
-</ul>
-<p><span class="math display">\[I_h\;\ge\;L\;=\;I_{\mathcal R}+S^{\mathrm t},\qquad S^{\mathrm t}=\log_2\sum_g w_g\,t_g^\zeta\le 0,\quad w_g\propto q_g^\zeta .\]</span></p>
-<p>This is a triangle inequality in bits. The uncontrolled power <span class="math inline">\(U=2^{I_{\mathcal R}}-2^{L}\)</span> satisfies <span class="math inline">\(0\le U\le|\mathcal B|-2^{S_{\mathcal R}}\)</span>.</p>
-<ul>
-<li><strong>Without Anonymity of robots</strong>, the fleet aggregate becomes <span class="math inline">\(F=-\tfrac1\xi\log_2\sum_r 2^{-\xi(S_r-\omega_r)}\)</span> with robot-specific offsets <span class="math inline">\(\omega_r\)</span>. Unweighted inequality aversion forces equal offsets. If the offset depends on the robot only through its power <span class="math inline">\(I_r\)</span>, single-robot composition additivity gives <span class="math inline">\(\omega_r=\kappa I_r\)</span> with one new parameter <span class="math inline">\(\kappa\ge0\)</span>.</li>
-<li><strong>The two constructions agree.</strong> The anonymous aggregate of the targeted steerabilities <span class="math inline">\(S^{\mathrm t}_r=L_r-I_r\)</span> is the case <span class="math inline">\(\kappa=1\)</span> with <span class="math inline">\(S_r\)</span> replaced by <span class="math inline">\(L_r\)</span>. A robot whose behaviour does not affect the goals then has <span class="math inline">\(S^{\mathrm t}_r=0\)</span> and no longer lowers the fleet value.</li>
-</ul>
+</section>
+<section id="targeted-steerability" class="level2">
+<h2 class="anchored" data-anchor-id="targeted-steerability">Targeted steerability</h2>
+<p>Weighting each world goal by the robots’ capability for it restores the product rule. The targeted steerability is</p>
+<p><span class="math display">\[S^{\mathrm t}=L-I_{\mathcal R}=\log_2\sum_g w_g\,t_g^\zeta\le 0,\qquad w_g\propto q_g^\zeta,\]</span></p>
+<p>and it gives a triangle inequality in bits, <span class="math inline">\(I_h\ge L=I_{\mathcal R}+S^{\mathrm t}\)</span>. The uncontrolled power <span class="math inline">\(U=2^{I_{\mathcal R}}-2^{L}\)</span> is the part of the robots’ effective number of goals that the overseer cannot direct, and <span class="math inline">\(0\le U\le|\mathcal B|-2^{S_{\mathcal R}}\)</span>.</p>
+<p>The anonymous aggregate of the per-robot values <span class="math inline">\(S^{\mathrm t}_r=L_r-I_r\)</span> equals the non-anonymous aggregate above with <span class="math inline">\(\kappa=1\)</span> and <span class="math inline">\(S_r\)</span> replaced by <span class="math inline">\(L_r\)</span>. A robot whose behaviour does not affect the goals has <span class="math inline">\(S^{\mathrm t}_r=0\)</span> and does not lower this fleet value, however unsteerable it is.</p>
 </section>
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
-<p>The overseer is fully rational and capabilities are undiscounted. With a boundedly rational overseer both bounds on <span class="math inline">\(I_h\)</span> can fail. Direct effects of the overseer on the world and aggregation over time are not treated. The targeted steerability is a ratio, so a one-bit gap counts the same for a weak and a strong robot; an aggregate of the absolute uncontrolled powers is an alternative that the axioms do not decide. How one robot’s capability in a fleet depends on the assumed behaviour of the others is left open.</p>
+<p>The overseer is fully rational and capabilities are undiscounted. With a boundedly rational overseer the bounds on <span class="math inline">\(I_h\)</span> can fail. Direct effects of the overseer on the world and aggregation over time are not treated. The targeted steerability is a ratio, so a one-bit gap counts the same for a weak and a strong robot. An aggregate of the absolute uncontrolled powers is an alternative that the axioms do not decide. How one robot’s capability in a fleet depends on the assumed behaviour of the others is left open.</p>
 </section>
 <section id="files-and-reproduction" class="level2">
 <h2 class="anchored" data-anchor-id="files-and-reproduction">Files and reproduction</h2>
