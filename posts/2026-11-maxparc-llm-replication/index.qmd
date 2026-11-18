@@ -12,7 +12,7 @@ This item replicates the lab experiment from our MaxParC paper with 1,800 LLM pa
 What has been checked: the code passes its unit tests, and the full analysis reproduces from the archived round data. What has not: no human has reviewed the code, the qualitative coding (done by AI coders) or the numbers in the report.
 :::
 
-**Report:** [PDF, 9 pages](report.pdf) · **Data:** [participants.csv](participants.csv) · [analysis.json](analysis.json) · [data.tar.gz](data.tar.gz) · **Code:** [code.zip](code.zip)
+**Report:** [PDF, 12 pages](report.pdf) · **Data:** [participants.csv](participants.csv) · [analysis.json](analysis.json) · [data.tar.gz](data.tar.gz) · **Code:** [code.zip](code.zip)
 
 ## Summary
 
@@ -54,8 +54,9 @@ Of the 1,800 participants, 1,678 passed all checks.
 - **Stated reasons.** In a coded sample of 120 reasoning traces, the most common primary reason is "my own points so far" (67). Next come strategic reasoning about the participant's role (22) and fairness (18, almost all from Gemma).
 - **They rarely use the safe conditional commitment.** The commitment the mechanism is built on is giving the full compromise a rating of 1–20 ("approve only if all approve"). Only 1 % of MaxParC ballots do this, although 99 % of participants describe the rule correctly when asked afterwards. Most models rate only their favourite; Gemma approves the compromise unconditionally.
 - **The compromise rarely won.** The full compromise won in only 15 % of MaxParC rounds. MaxParC and plurality voting paid the same on average (36.1 vs 36.2 points per round), the tie the payoff table predicts for this treatment.
+- **Professed values do not explain the choice.** Before the game, 98–100 % of participants endorse compromise, consensus and protecting minorities, and none identifies as marginalised (humans: 43 %). Answers hardly vary among copies of a model. Afterwards they judge MaxParC fairer than plurality voting (51 % vs 37 %; humans: 68 % for MaxParC) and more inclusive, but hard to understand (20 % find it easy, against 100 % for plurality voting). Their fairness verdicts are self-serving: in every model, the method that paid a participant more is the one it judges fairer (Spearman ρ = −0.35 overall). This questionnaire analysis is exploratory; it was not in the analysis plan.
 
-The [report](report.pdf) covers the per-model tests, the logit and rating regressions next to the paper's human estimates, the deviations from the original design, and the limitations. The limitations are:
+The [report](report.pdf) covers the per-model tests, the logit and rating regressions next to the paper's human estimates, the questionnaire answers, the deviations from the original design, and the limitations. The limitations are:
 
 - the participants are unpaid;
 - the 300 copies of one model are not independent;
@@ -86,6 +87,11 @@ python run.py analyze --run main-or6
 ```
 
 This writes `runs/main-or6/analysis.md` and `analysis.json`; only the API-cost figures stay empty without the logs.
+The questionnaire tables (report Section 5) then follow from:
+
+```bash
+python scripts/questionnaires.py main-or6
+```
 
 Re-running the experiment needs an OpenRouter API key and cost USD 75. Model outputs will not be identical on a re-run:
 
