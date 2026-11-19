@@ -15,7 +15,7 @@ The inequalities were tested numerically on random finite instances (20,000 each
 The propositions that derive functional forms from axioms (prevention forms, aggregation without anonymity) are stated with proof sketches only.
 :::
 
-**Note:** [PDF, 14 pages](fleet-steerability-note.pdf) · **Source and test scripts:** [source.zip](source.zip)
+**Note:** [PDF, 16 pages](fleet-steerability-note.pdf) · **Source and test scripts:** [source.zip](source.zip)
 
 ## Summary
 
@@ -67,21 +67,29 @@ $$S^+_r=\log_2\sum_{g\in\mathcal G_r}p(g)^{\zeta'_+},\qquad S^+_{\mathcal R}=\lo
 A null axiom (sN: all robots that ignore the overseer have the same steerability) contradicts Reliability Preference (sI5) and forces $\zeta'_+=1$.
 For one-shot commands and singleton goals, the $\zeta'_+=1$ measure is the maximal leakage of Issa et al. (2020).
 Prevention steerability violates the null axiom.
+The prevention counterpart of the argument: with $\mu_r=\sum_c\min_\sigma P_\sigma(c)$ the probability mass the overseer cannot move, the null axiom forces a prevention measure to be a function of $\mu_r$, namely $\log_2(1-\mu_r)$, and excludes Weakest-Goal Preference (sI5′).
 
 ## Fleet-level aggregation
 
-- **Form.** The renamed axioms (sP0–8) give
-  $$F=-\tfrac1{\xi'}\log_2\sum_r 2^{-\xi' S_r},\qquad \min_r S_r-\tfrac{\log_2 n}{\xi'}\le F\le\min_r S_r .$$
-- **Least-robot focus.** Losing one bit of one robot's steerability is uncompensable by $k$ other robots if and only if $k\le 2^{\xi'}-1$. Uncompensability for all fleet sizes forces $F=\min_r S_r$ and gives up strict monotonicity.
-- **Granularity.** $F$ is invariant under replacing a group of robots by a representative with their aggregate steerability. For attainment goals it is not invariant under merging robots into a coalition: that invariance would force $F=S^+_{\mathcal R}$, which is a sum for independent robots and violates inequality aversion (sP6).
-- **No such conflict for prevention goals.** If a robot with $S_r=0$ is neutral (sP4′) and $\xi'=1/\zeta'$, the aggregate $-\tfrac1{\xi'}\log_2\big(1+\sum_r(2^{-\xi' S_r}-1)\big)$ equals the steerability of one robot with all the fleet's prevention goals. It is invariant under coalition merges and inequality-averse.
+- **Form.** The renamed axioms (sP0–8) give $F$ for the standard steerabilities and $F^+$ for the attainment steerabilities,
+  $$F=-\tfrac1{\xi'}\log_2\sum_r 2^{-\xi' S_r},\qquad F^+=-\tfrac1{\xi'}\log_2\sum_r 2^{-\xi' S^+_r},\qquad \min_r S_r-\tfrac{\log_2 n}{\xi'}\le F\le\min_r S_r ,$$
+  with the same bounds for $F^+$.
+- **Least-robot focus.** For $F^+$, losing one bit of one robot's steerability is uncompensable by $k$ other robots if and only if $k\le 2^{\xi'}-1$. For $F$ the others can compensate less, because they cannot be more than perfectly steerable: the loss is uncompensable also for larger $k$ if the common level is close enough to $0$. Uncompensability in all cases forces the minimum and gives up strict monotonicity.
+- **Granularity.** $F$ and $F^+$ are invariant under replacing a group of robots by a representative with their aggregate steerability. For attainment goals $F^+$ is not invariant under merging robots into a coalition: that invariance would force the aggregate to equal $S^+_{\mathcal R}$, which is a sum for independent robots and violates inequality aversion (sP6).
+- **No such conflict for prevention goals.** If a robot with $S_r=0$ is neutral (sP4′) and $\xi'=1/\zeta'$, the aggregate $F^0=-\tfrac1{\xi'}\log_2\big(1+\sum_r(2^{-\xi' S_r}-1)\big)$, with $F\le F^0\le\min_r S_r$, equals the steerability of one robot with all the fleet's prevention goals. It is invariant under coalition merges and inequality-averse.
 - **Without anonymity of robots**, the aggregate becomes $F=-\tfrac1{\xi'}\log_2\sum_r 2^{-\xi'(S_r-\omega_r)}$ with robot-specific offsets $\omega_r$. Unweighted inequality aversion forces equal offsets. If the offset depends on a robot only through its power $I_r$ (sP1′), single-robot composition additivity (sP8) gives $\omega_r=\kappa' I_r$ with one new parameter $\kappa'\ge0$.
 
-## Joint and individual attainment steerability
+## Joint and individual steerability
 
-$S^+_{\mathcal R}=\sum_r S^+_r$ for independently commanded robots, and $S^+_{\mathcal R}\le\sum_r S^+_r$ whenever the robots' behaviours are independent under every overseer strategy.
+**Attainment.** $S^+_{\mathcal R}=\sum_r S^+_r$ for independently commanded robots, and $S^+_{\mathcal R}\le\sum_r S^+_r$ whenever the robots' behaviours are independent under every overseer strategy.
 Under a command bottleneck $S^+_{\mathcal R}$ is much smaller than the sum.
 With randomness shared between robots it can exceed the sum.
+
+**Prevention.** There are three ways to form fleet goals, and the relations are reversed.
+
+- *Union* of all robots' prevention goals: $\sum_r S_r\le S^\cup_{\mathcal R}\le\min_r S_r$, with no independence assumption, and $S^\cup_{\mathcal R}=F^0$ for $\xi'=1/\zeta'$.
+- *Joint-cell* prevention (keep the joint behaviour out of a combination of cells) is easier than individual prevention: for $\zeta'\to0$, $S_{\mathcal R}\ge\max_r S_r$.
+- *Simultaneous* prevention (keep every robot out of its cell at once) is the demanding notion: $S^\wedge_{\mathcal R}\le\min_r S_r$ always, and for $\zeta'\to0$ it equals $\sum_r S_r$ for independently commanded robots. Under a command bottleneck every single action is preventable ($S_r=0$) but simultaneous prevention can be impossible ($S^\wedge_{\mathcal R}=-\infty$).
 
 ## Human power, robot power and steerability
 
@@ -95,8 +103,8 @@ and the results below take $\zeta'_+=\zeta$.
 
 - **Bounds through joint steerability.** If the outcome is a deterministic function of the joint behaviour with at most $m$ behaviour cells per world goal, then for $\zeta\ge1$
   $$S^+_{\mathcal R}-\log_2 m\;\le\;I_h\;\le\;S^+_{\mathcal R}+(\zeta-1)\log_2 m .$$
-- **Power implies total, not least, steerability.** Under independence and $\zeta=1$, some robot has $S^+_r\ge I_h/n$. Human power implies no lower bound on the least steerable robot or on $F$.
-- **Veto power.** The overseer's capability to prevent world goals, measured by the prevention form, is at most the joint prevention steerability plus $\zeta'\log_2 m$. There is no bound in the other direction, because an outcome is prevented only if all behaviours that lead to it are prevented at once.
+- **Power implies total, not least, steerability.** Under independence and $\zeta=1$, some robot has $S^+_r\ge I_h/n$. Human power implies no lower bound on the least steerable robot, on $F^+$ or on $F$.
+- **Veto power.** The overseer's capability to prevent world goals, measured by the prevention form, is at most the joint-cell prevention steerability plus $\zeta'\log_2 m$. There is no bound in the other direction, because an outcome is prevented only if all behaviours that lead to it are prevented at once. Veto power implies no lower bound on $F$ either.
 - **Robot power bounds human power.** $I_h\le I_{\mathcal R}$, and for $\zeta=1$ also $I_h\le\min(I_{\mathcal R},S^+_{\mathcal R})$.
 - **A triangle inequality in effective numbers of goals.** For $\zeta\ge1$ and singleton behaviour goals,
   $$|\mathcal B|-2^{I_h}\;\le\;\big(|\mathcal B|-2^{I_{\mathcal R}}\big)+\big(|\mathcal B|-2^{S^+_{\mathcal R}}\big),$$
@@ -114,6 +122,13 @@ The uncontrolled power $U=2^{I_{\mathcal R}}-2^{L}$ is the part of the robots' e
 
 The anonymous aggregate of the per-robot values $S^{\mathrm t}_r=L_r-I_r$ equals the non-anonymous aggregate above with $\kappa'=1$ and $S_r$ replaced by $L_r$.
 A robot whose behaviour does not affect the goals has $S^{\mathrm t}_r=0$ and does not lower this fleet value, however unsteerable it is.
+
+**Prevention counterpart.** Let $V_h$ be the overseer's veto power over world goals, $V_{\mathcal R}$ the fleet's own veto power, and $T^-$ the prevention form applied to the probabilities with which the overseer can make the fleet behave as it would if it wanted to avoid each goal.
+Then, for every $\zeta'$,
+
+$$V_{\mathcal R}+T^-\;\le\;V_h\;\le\;V_{\mathcal R} .$$
+
+For prevention goals the triangle inequality in bits therefore holds without goal weights, because the prevention form turns the product rule for capabilities into an inequality between sums of deficits.
 
 ## Use as a constraint on an AI system
 
