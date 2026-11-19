@@ -7,7 +7,7 @@ listing:
   fields: [date, title, status, categories]
   field-display-names:
     status: "Status"
-  date-format: "YYYY-MM"
+  date-format: "YYYY-MM-DD"
   categories: true
 ---
 
