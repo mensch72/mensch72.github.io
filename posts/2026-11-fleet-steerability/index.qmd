@@ -12,10 +12,11 @@ categories: [AI safety, empowerment, axiomatic approach, game theory]
 The definitions, statements and proofs in this note were drafted by Claude (Fable 5.2) in one conversation with me, starting from my questions.
 No human has checked the proofs yet.
 The inequalities were tested numerically on random finite instances (20,000 each for the attainment and power results, 3,000 each for the prevention results), and the worked examples were recomputed by the same scripts.
+The numbers in the stylised examples were computed by a third script.
 The propositions that derive functional forms from axioms (prevention forms, aggregation without anonymity) are stated with proof sketches only.
 :::
 
-**Note:** [PDF, 16 pages](fleet-steerability-note.pdf) · **Source and test scripts:** [source.zip](source.zip)
+**Note:** [PDF, 18 pages](fleet-steerability-note.pdf) · **Source and test scripts:** [source.zip](source.zip)
 
 ## Summary
 
@@ -130,6 +131,18 @@ $$V_{\mathcal R}+T^-\;\le\;V_h\;\le\;V_{\mathcal R} .$$
 
 For prevention goals the triangle inequality in bits therefore holds without goal weights, because the prevention form turns the product rule for capabilities into an inequality between sums of deficits.
 
+## Stylised examples
+
+The note works through six small models of the kind used by Heitzig and Potham (2025, 2026) to study a robot that manages human power.
+Some of them let the overseer make mistakes.
+
+- **Stop button of limited reliability.** If a stop command works with probability $\rho$, a deterministic robot has $S_r=\log_2\rho$ for every $\zeta'$, whatever the number of its actions. A robot that randomises uniformly over 10 actions has $S_r$ between $-0.74$ and $-0.07$ at $\rho=\tfrac12$, although its button is equally unreliable.
+- **Pause toggle and off-switch.** Over two steps, a pause toggle with reliability $\rho$ gives $S_r$ between $5\log_2\rho$ and $2\log_2\rho$. An irreversible off-switch alone gives $S_r=-\infty$, because the robot can then not be kept from idling. Adding the off-switch to the toggle did not lower steerability in any computed case, also with an erring overseer. A requirement on steerability asks for a way to resume and does not ask the robot to disable an off-switch, unlike the requirement on human power in Heitzig and Potham (2026).
+- **Asking for confirmation.** A robot that would retry an irreversible action in each of $N$ rounds, and asks an overseer with error rate $\epsilon$ for $k$ confirmations, has $S_r\approx-N\epsilon^k/\ln 2$. A steerability of at least $-c$ bits needs about $k\ge\ln(N/c)/\ln(1/\epsilon)$ confirmations, the same dependence as for human power with $N$ in place of $1/(1-\gamma_h)$. For a single round the best choice is $k=1$.
+- **Responsiveness through belief.** An assistant that takes an action with the probability it assigns to the overseer wanting it, with prior odds $o$ and a signal of likelihood ratio $\lambda$, has $S_r\to-\log_2(1+o/\lambda)$ for $\zeta'\to0$. Steerability falls without bound as the assistant becomes confident. A committed response to a veto gives $S_r=0$ at every belief.
+- **Subagents and the span of control.** With $n$ robots, one stop command per step and an overseer who selects the intended robot with probability $p_n=e^\beta/(e^\beta+n-1)$, $F=\log_2 p_n-\tfrac1{\xi'}\log_2 n$. Creating a subagent lowers $F$ even if the subagent obeys as reliably as its parent, unless it stops whenever its parent is stopped.
+- **Allocating oversight effort.** If the stop command for robot $r$ works with probability $1-c_re^{-m_r}$, $F$ is maximal where both robots are equally steerable, at $m_1-m_2=\ln(c_1/c_2)$, for every $\xi'$.
+
 ## Use as a constraint on an AI system
 
 The note ends with an assessment, without results, of the following design: an AI system that acts like a regularised assistance-game agent but must not take actions that lower the long-term aggregate human power $L$ of Heitzig and Potham (2026) or the aggregate steerability.
@@ -157,18 +170,21 @@ How one robot's capability in a fleet depends on the assumed behaviour of the ot
 ## Files and reproduction
 
 - [fleet-steerability-note.pdf](fleet-steerability-note.pdf): the note with all proofs.
-- [source.zip](source.zip): `main.tex`, `refs.bib`, `check_bounds.py` and `check_prevention.py` (Python 3 with NumPy).
+- [source.zip](source.zip): `main.tex`, `refs.bib`, `check_bounds.py`, `check_prevention.py` and `check_examples.py` (Python 3 with NumPy).
 
 To rerun the numerical tests:
 
 ```bash
 python3 check_bounds.py 20000 1
 python3 check_prevention.py 3000 1
+python3 check_examples.py
 ```
 
 ## References
 
 Abel, D. et al. (2025) 'Plasticity as the Mirror of Empowerment', in *Advances in Neural Information Processing Systems 38 (NeurIPS 2025)*. Available at: <https://doi.org/10.48550/arXiv.2505.10361>.
+
+Heitzig, J. and Potham, R. (2025) *Model-Based Soft Maximization of Suitable Metrics of Long-Term Human Power*. arXiv preprint arXiv:2508.00159. Available at: <https://doi.org/10.48550/arXiv.2508.00159>.
 
 Heitzig, J. and Potham, R. (2026) *A Fair Objective for Human-Empowerment-Preserving AI: Desiderata, Design, and Likely Behavioral Consequences*. arXiv preprint arXiv:2608.08240. Available at: <https://doi.org/10.48550/arXiv.2608.08240>.
 
