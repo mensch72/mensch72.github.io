@@ -183,6 +183,7 @@ window.Quarto = {
   <li><a href="#joint-and-individual-steerability" id="toc-joint-and-individual-steerability" class="nav-link" data-scroll-target="#joint-and-individual-steerability">Joint and individual steerability</a></li>
   <li><a href="#human-power-robot-power-and-steerability" id="toc-human-power-robot-power-and-steerability" class="nav-link" data-scroll-target="#human-power-robot-power-and-steerability">Human power, robot power and steerability</a></li>
   <li><a href="#targeted-steerability" id="toc-targeted-steerability" class="nav-link" data-scroll-target="#targeted-steerability">Targeted steerability</a></li>
+  <li><a href="#stylised-examples" id="toc-stylised-examples" class="nav-link" data-scroll-target="#stylised-examples">Stylised examples</a></li>
   <li><a href="#use-as-a-constraint-on-an-ai-system" id="toc-use-as-a-constraint-on-an-ai-system" class="nav-link" data-scroll-target="#use-as-a-constraint-on-an-ai-system">Use as a constraint on an AI system</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
   <li><a href="#files-and-reproduction" id="toc-files-and-reproduction" class="nav-link" data-scroll-target="#files-and-reproduction">Files and reproduction</a></li>
@@ -236,10 +237,10 @@ Status: AI-assisted sketch
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The definitions, statements and proofs in this note were drafted by Claude (Fable 5.2) in one conversation with me, starting from my questions. No human has checked the proofs yet. The inequalities were tested numerically on random finite instances (20,000 each for the attainment and power results, 3,000 each for the prevention results), and the worked examples were recomputed by the same scripts. The propositions that derive functional forms from axioms (prevention forms, aggregation without anonymity) are stated with proof sketches only.</p>
+<p>The definitions, statements and proofs in this note were drafted by Claude (Fable 5.2) in one conversation with me, starting from my questions. No human has checked the proofs yet. The inequalities were tested numerically on random finite instances (20,000 each for the attainment and power results, 3,000 each for the prevention results), and the worked examples were recomputed by the same scripts. The numbers in the stylised examples were computed by a third script. The propositions that derive functional forms from axioms (prevention forms, aggregation without anonymity) are stated with proof sketches only.</p>
 </div>
 </div>
-<p><strong>Note:</strong> <a href="fleet-steerability-note.pdf">PDF, 16 pages</a> · <strong>Source and test scripts:</strong> <a href="source.zip">source.zip</a></p>
+<p><strong>Note:</strong> <a href="fleet-steerability-note.pdf">PDF, 18 pages</a> · <strong>Source and test scripts:</strong> <a href="source.zip">source.zip</a></p>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>Abel et al.&nbsp;(2025) call the influence of observations on an agent’s actions <em>plasticity</em> and define it by a directed-information quantity. The note asks what the axiomatic approach of Heitzig and Potham (2026) to human power gives for the mirrored question: how well can one overseer steer each of several robots with fixed policies? The standard steerability goal is to <em>prevent</em> a certain robot action. Goals to make a robot do something (attainment goals) are a variant, used to relate steerability to the overseer’s power over the world and to the robots’ own power.</p>
@@ -318,6 +319,18 @@ Status: AI-assisted sketch
 <p><span class="math display">\[V_{\mathcal R}+T^-\;\le\;V_h\;\le\;V_{\mathcal R} .\]</span></p>
 <p>For prevention goals the triangle inequality in bits therefore holds without goal weights, because the prevention form turns the product rule for capabilities into an inequality between sums of deficits.</p>
 </section>
+<section id="stylised-examples" class="level2">
+<h2 class="anchored" data-anchor-id="stylised-examples">Stylised examples</h2>
+<p>The note works through six small models of the kind used by Heitzig and Potham (2025, 2026) to study a robot that manages human power. Some of them let the overseer make mistakes.</p>
+<ul>
+<li><strong>Stop button of limited reliability.</strong> If a stop command works with probability <span class="math inline">\(\rho\)</span>, a deterministic robot has <span class="math inline">\(S_r=\log_2\rho\)</span> for every <span class="math inline">\(\zeta'\)</span>, whatever the number of its actions. A robot that randomises uniformly over 10 actions has <span class="math inline">\(S_r\)</span> between <span class="math inline">\(-0.74\)</span> and <span class="math inline">\(-0.07\)</span> at <span class="math inline">\(\rho=\tfrac12\)</span>, although its button is equally unreliable.</li>
+<li><strong>Pause toggle and off-switch.</strong> Over two steps, a pause toggle with reliability <span class="math inline">\(\rho\)</span> gives <span class="math inline">\(S_r\)</span> between <span class="math inline">\(5\log_2\rho\)</span> and <span class="math inline">\(2\log_2\rho\)</span>. An irreversible off-switch alone gives <span class="math inline">\(S_r=-\infty\)</span>, because the robot can then not be kept from idling. Adding the off-switch to the toggle did not lower steerability in any computed case, also with an erring overseer. A requirement on steerability asks for a way to resume and does not ask the robot to disable an off-switch, unlike the requirement on human power in Heitzig and Potham (2026).</li>
+<li><strong>Asking for confirmation.</strong> A robot that would retry an irreversible action in each of <span class="math inline">\(N\)</span> rounds, and asks an overseer with error rate <span class="math inline">\(\epsilon\)</span> for <span class="math inline">\(k\)</span> confirmations, has <span class="math inline">\(S_r\approx-N\epsilon^k/\ln 2\)</span>. A steerability of at least <span class="math inline">\(-c\)</span> bits needs about <span class="math inline">\(k\ge\ln(N/c)/\ln(1/\epsilon)\)</span> confirmations, the same dependence as for human power with <span class="math inline">\(N\)</span> in place of <span class="math inline">\(1/(1-\gamma_h)\)</span>. For a single round the best choice is <span class="math inline">\(k=1\)</span>.</li>
+<li><strong>Responsiveness through belief.</strong> An assistant that takes an action with the probability it assigns to the overseer wanting it, with prior odds <span class="math inline">\(o\)</span> and a signal of likelihood ratio <span class="math inline">\(\lambda\)</span>, has <span class="math inline">\(S_r\to-\log_2(1+o/\lambda)\)</span> for <span class="math inline">\(\zeta'\to0\)</span>. Steerability falls without bound as the assistant becomes confident. A committed response to a veto gives <span class="math inline">\(S_r=0\)</span> at every belief.</li>
+<li><strong>Subagents and the span of control.</strong> With <span class="math inline">\(n\)</span> robots, one stop command per step and an overseer who selects the intended robot with probability <span class="math inline">\(p_n=e^\beta/(e^\beta+n-1)\)</span>, <span class="math inline">\(F=\log_2 p_n-\tfrac1{\xi'}\log_2 n\)</span>. Creating a subagent lowers <span class="math inline">\(F\)</span> even if the subagent obeys as reliably as its parent, unless it stops whenever its parent is stopped.</li>
+<li><strong>Allocating oversight effort.</strong> If the stop command for robot <span class="math inline">\(r\)</span> works with probability <span class="math inline">\(1-c_re^{-m_r}\)</span>, <span class="math inline">\(F\)</span> is maximal where both robots are equally steerable, at <span class="math inline">\(m_1-m_2=\ln(c_1/c_2)\)</span>, for every <span class="math inline">\(\xi'\)</span>.</li>
+</ul>
+</section>
 <section id="use-as-a-constraint-on-an-ai-system" class="level2">
 <h2 class="anchored" data-anchor-id="use-as-a-constraint-on-an-ai-system">Use as a constraint on an AI system</h2>
 <p>The note ends with an assessment, without results, of the following design: an AI system that acts like a regularised assistance-game agent but must not take actions that lower the long-term aggregate human power <span class="math inline">\(L\)</span> of Heitzig and Potham (2026) or the aggregate steerability.</p>
@@ -341,15 +354,17 @@ Status: AI-assisted sketch
 <h2 class="anchored" data-anchor-id="files-and-reproduction">Files and reproduction</h2>
 <ul>
 <li><a href="fleet-steerability-note.pdf">fleet-steerability-note.pdf</a>: the note with all proofs.</li>
-<li><a href="source.zip">source.zip</a>: <code>main.tex</code>, <code>refs.bib</code>, <code>check_bounds.py</code> and <code>check_prevention.py</code> (Python 3 with NumPy).</li>
+<li><a href="source.zip">source.zip</a>: <code>main.tex</code>, <code>refs.bib</code>, <code>check_bounds.py</code>, <code>check_prevention.py</code> and <code>check_examples.py</code> (Python 3 with NumPy).</li>
 </ul>
 <p>To rerun the numerical tests:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> check_bounds.py 20000 1</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> check_prevention.py 3000 1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> check_prevention.py 3000 1</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> check_examples.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Abel, D. et al.&nbsp;(2025) ‘Plasticity as the Mirror of Empowerment’, in <em>Advances in Neural Information Processing Systems 38 (NeurIPS 2025)</em>. Available at: <a href="https://doi.org/10.48550/arXiv.2505.10361" class="uri">https://doi.org/10.48550/arXiv.2505.10361</a>.</p>
+<p>Heitzig, J. and Potham, R. (2025) <em>Model-Based Soft Maximization of Suitable Metrics of Long-Term Human Power</em>. arXiv preprint arXiv:2508.00159. Available at: <a href="https://doi.org/10.48550/arXiv.2508.00159" class="uri">https://doi.org/10.48550/arXiv.2508.00159</a>.</p>
 <p>Heitzig, J. and Potham, R. (2026) <em>A Fair Objective for Human-Empowerment-Preserving AI: Desiderata, Design, and Likely Behavioral Consequences</em>. arXiv preprint arXiv:2608.08240. Available at: <a href="https://doi.org/10.48550/arXiv.2608.08240" class="uri">https://doi.org/10.48550/arXiv.2608.08240</a>.</p>
 <p>Issa, I., Wagner, A.B. and Kamath, S. (2020) ‘An Operational Approach to Information Leakage’, <em>IEEE Transactions on Information Theory</em>, 66(3), pp.&nbsp;1625–1657. Available at: <a href="https://doi.org/10.1109/TIT.2019.2962804" class="uri">https://doi.org/10.1109/TIT.2019.2962804</a>.</p>
 </section>
