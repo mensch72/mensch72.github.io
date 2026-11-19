@@ -17,8 +17,8 @@ Nothing here is proved, and the statements about the cited literature have not b
 In an open-source game, an agent cooperates only with counterparts it can verify to be instances of an approved power-preserving design, and otherwise plays a safe fallback.
 
 The design has two visible parts.
-The first is a decision algorithm of a fixed type whose objective does not lower aggregate human power (EMPO is one candidate).
-The second is a world model produced by a fixed training algorithm from logged observations (Scientist AI is one candidate).
+The first is a decision algorithm of a fixed type whose objective does not lower aggregate human power (EMPO is one candidate; Heitzig and Potham, 2026).
+The second is a world model produced by a fixed training algorithm from logged observations (Scientist AI is one candidate; Bengio et al., 2026).
 The verified object is the whole system: decision rule, learner, current state and logs.
 
 ## Why it could work
@@ -52,4 +52,6 @@ It does not show the weights follow from it; that needs re-execution or a proof 
 ## References
 
 - Abbaszadeh, K., Pappas, C., Katz, J. and Papadopoulos, D. (2024) 'Zero-knowledge proofs of training for deep neural networks', *ACM CCS 2024*. Cryptology ePrint Archive, Paper 2024/162. <https://eprint.iacr.org/2024/162>
+- Bengio, Y., Richardson, O., Gavenčiak, T., Cohen, M., Svarc, R., Fornasiere, D., Gendron, G., Hyland, D., Kamanda, A., Oberman, A., Ward, F.R., Gavenčiak, A., Slosser, J.L., Mai, V., Serban, I. and Ghosn, J. (2026) 'Safety from honesty in a disinterested AI predictor', *arXiv preprint* arXiv:2606.29657. <https://doi.org/10.48550/arXiv.2606.29657>
 - Critch, A., Dennis, M. and Russell, S. (2022) 'Cooperative and uncooperative institution designs: surprises and problems in open-source game theory', *arXiv preprint* arXiv:2208.07006. <https://doi.org/10.48550/arXiv.2208.07006>
+- Heitzig, J. and Potham, R. (2026) 'A fair objective for human-empowerment-preserving AI: desiderata, design, and likely behavioral consequences', *arXiv preprint* arXiv:2608.08240. <https://doi.org/10.48550/arXiv.2608.08240>
