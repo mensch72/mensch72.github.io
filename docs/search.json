@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Working notes",
     "section": "",
-    "text": "Things I have worked on, many with substantial AI assistance, and of varying maturity. Each item states its status and how far its results have been checked.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nStatus\n\n\nCategories\n\n\n\n\n\n\n2026-11\n\n\nSteerability of a robot fleet by one overseer\n\n\nAI-assisted · sketch · proofs not checked by a human; inequalities tested numerically on random instances\n\n\nAI safety, empowerment, axiomatic approach, game theory\n\n\n\n\n2026-11\n\n\nDo LLM agents choose MaxParC? A replication of our voting lab experiment with open-weight models\n\n\nAI-assisted · draft · analysis re-run from the archived data; code, coding and text not checked by a human\n\n\nsocial choice, voting, experiments, LLM agents\n\n\n\n\n2026-11\n\n\nUnstated voters: how recent voting papers state their behavioural assumptions\n\n\nAI-assisted · draft · evidence quotes machine-checked; codes not yet checked by a human\n\n\nsocial choice, computational social choice, voting, meta-research\n\n\n\n\n2026-08\n\n\nDoes the grand coalition form?\n\n\nAI-assisted · work in progress · Lean formalization under way\n\n\ngame theory, coalition formation, cooperative games\n\n\n\n\n\nNo matching items"
+    "text": "Things I have worked on, many with substantial AI assistance, and of varying maturity. Each item states its status and how far its results have been checked.\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nDate\n\n\nTitle\n\n\nStatus\n\n\nCategories\n\n\n\n\n\n\n2026-11\n\n\nCooperate only with verifiably power-preserving agents: a sketch\n\n\nAI-assisted · sketch · nothing proved; literature claims not independently checked\n\n\nopen-source game theory, cooperative AI, AI safety, empowerment\n\n\n\n\n2026-11\n\n\nSteerability of a robot fleet by one overseer\n\n\nAI-assisted · sketch · proofs not checked by a human; inequalities tested numerically on random instances\n\n\nAI safety, empowerment, axiomatic approach, game theory\n\n\n\n\n2026-11\n\n\nDo LLM agents choose MaxParC? A replication of our voting lab experiment with open-weight models\n\n\nAI-assisted · draft · analysis re-run from the archived data; code, coding and text not checked by a human\n\n\nsocial choice, voting, experiments, LLM agents\n\n\n\n\n2026-11\n\n\nUnstated voters: how recent voting papers state their behavioural assumptions\n\n\nAI-assisted · draft · evidence quotes machine-checked; codes not yet checked by a human\n\n\nsocial choice, computational social choice, voting, meta-research\n\n\n\n\n2026-08\n\n\nDoes the grand coalition form?\n\n\nAI-assisted · work in progress · Lean formalization under way\n\n\ngame theory, coalition formation, cooperative games\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2026-11-maxparc-llm-replication/index.html",
@@ -96,6 +96,48 @@
     "title": "Does the grand coalition form?",
     "section": "Citation",
     "text": "Citation\nHeitzig, J. (2026) Does the grand coalition form? Persistence, arrival, and the role of the sharing rule in a dynamic process of nested binding agreements. arXiv preprint arXiv:2608.17766. Available at: https://doi.org/10.48550/arXiv.2608.17766."
+  },
+  {
+    "objectID": "posts/2026-11-verified-design-cooperation/index.html",
+    "href": "posts/2026-11-verified-design-cooperation/index.html",
+    "title": "Cooperate only with verifiably power-preserving agents: a sketch",
+    "section": "",
+    "text": "Status: AI-assisted sketch\n\n\n\nThis is a one-page idea sketch that came out of a conversation with a language model (Claude Fable 5.2), which also wrote the text. Nothing here is proved, and the statements about the cited literature have not been checked by me."
+  },
+  {
+    "objectID": "posts/2026-11-verified-design-cooperation/index.html#idea",
+    "href": "posts/2026-11-verified-design-cooperation/index.html#idea",
+    "title": "Cooperate only with verifiably power-preserving agents: a sketch",
+    "section": "Idea",
+    "text": "Idea\nIn an open-source game, an agent cooperates only with counterparts it can verify to be instances of an approved power-preserving design, and otherwise plays a safe fallback.\nThe design has two visible parts. The first is a decision algorithm of a fixed type whose objective does not lower aggregate human power (EMPO is one candidate). The second is a world model produced by a fixed training algorithm from logged observations (Scientist AI is one candidate). The verified object is the whole system: decision rule, learner, current state and logs."
+  },
+  {
+    "objectID": "posts/2026-11-verified-design-cooperation/index.html#why-it-could-work",
+    "href": "posts/2026-11-verified-design-cooperation/index.html#why-it-could-work",
+    "title": "Cooperate only with verifiably power-preserving agents: a sketch",
+    "section": "Why it could work",
+    "text": "Why it could work\n\nFail-closed. If the check is sound, the agent never cooperates with an unverified counterpart. This is the unexploitability property of “defect unless proof of cooperation” agents (Critch, Dennis and Russell, 2022), now protecting people outside the game.\nSelection. Cooperation is earned only by being legibly of the approved design. Membership is rewarded in the program meta-game, so the design acts as a standard with a network effect.\nCheap verification. Membership is a property of code plus a certificate, checked by inspection. No proof search over mutual behaviour is needed, so the unknown proof-length threshold of the Löbian results does not arise.\nNo world model inside the proof system. The claim “this design preserves human power” is argued once, outside the game, by ordinary theory and evidence."
+  },
+  {
+    "objectID": "posts/2026-11-verified-design-cooperation/index.html#what-must-be-verified",
+    "href": "posts/2026-11-verified-design-cooperation/index.html#what-must-be-verified",
+    "title": "Cooperate only with verifiably power-preserving agents: a sketch",
+    "section": "What must be verified",
+    "text": "What must be verified\n\n\n\n\n\n\n\n\nClaim\nHow\nStatus\n\n\n\n\nThe whole program is an instance of the design, with no wrapper overriding it\nSource inspection\nFeasible\n\n\nThe current weights result from the visible training algorithm on the logged data\nSuccinct, incrementally updated proof of training (Abbaszadeh et al., 2024), or hardware attestation\nProofs exist for small networks; attestation shifts trust to the hardware vendor\n\n\nThe log is complete and its entries authentic\nAppend-only commitments published as observations arrive; signed sources\nFeasible, needs infrastructure\n\n\nThe world model is close to what the training objective targets\nLoss bound on committed test queries\nStatistical evidence only\n\n\n\nHashing alone shows a log was not altered. It does not show the weights follow from it; that needs re-execution or a proof of the computation."
+  },
+  {
+    "objectID": "posts/2026-11-verified-design-cooperation/index.html#open-problems",
+    "href": "posts/2026-11-verified-design-cooperation/index.html#open-problems",
+    "title": "Cooperate only with verifiably power-preserving agents: a sketch",
+    "section": "Open problems",
+    "text": "Open problems\n\nEndogenous conditionality. Does an agent of the design choose, from its own objective, to cooperate with verified instances and fall back otherwise? If the rule has to be added as a wrapper, the agent fails its own membership test.\nFree parameters. Whose power counts and how it is aggregated must be fixed or bounded by the class definition.\nSafe fallback. The “else” action must itself not lower human power; a true no-op may not exist.\nScale. Reported provers need minutes per training step for networks of about ten million parameters.\nProcedure versus quality. A proof of training certifies that the algorithm was followed, not that it converged.\nDual use. The mechanism entrenches whichever design is chosen, good or bad."
+  },
+  {
+    "objectID": "posts/2026-11-verified-design-cooperation/index.html#references",
+    "href": "posts/2026-11-verified-design-cooperation/index.html#references",
+    "title": "Cooperate only with verifiably power-preserving agents: a sketch",
+    "section": "References",
+    "text": "References\n\nAbbaszadeh, K., Pappas, C., Katz, J. and Papadopoulos, D. (2024) ‘Zero-knowledge proofs of training for deep neural networks’, ACM CCS 2024. Cryptology ePrint Archive, Paper 2024/162. https://eprint.iacr.org/2024/162\nCritch, A., Dennis, M. and Russell, S. (2022) ‘Cooperative and uncooperative institution designs: surprises and problems in open-source game theory’, arXiv preprint arXiv:2208.07006. https://doi.org/10.48550/arXiv.2208.07006"
   },
   {
     "objectID": "posts/2026-11-fleet-steerability/index.html",

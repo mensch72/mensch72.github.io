@@ -1,0 +1,55 @@
+---
+title: "Cooperate only with verifiably power-preserving agents: a sketch"
+date: 2026-11-19
+status: "AI-assisted · sketch · nothing proved; literature claims not independently checked"
+categories: [open-source game theory, cooperative AI, AI safety, empowerment]
+---
+
+::: {.callout-warning appearance="simple"}
+## Status: AI-assisted sketch
+
+This is a one-page idea sketch that came out of a conversation with a language model (Claude Fable 5.2), which also wrote the text.
+Nothing here is proved, and the statements about the cited literature have not been checked by me.
+:::
+
+## Idea
+
+In an open-source game, an agent cooperates only with counterparts it can verify to be instances of an approved power-preserving design, and otherwise plays a safe fallback.
+
+The design has two visible parts.
+The first is a decision algorithm of a fixed type whose objective does not lower aggregate human power (EMPO is one candidate).
+The second is a world model produced by a fixed training algorithm from logged observations (Scientist AI is one candidate).
+The verified object is the whole system: decision rule, learner, current state and logs.
+
+## Why it could work
+
+- **Fail-closed.** If the check is sound, the agent never cooperates with an unverified counterpart. This is the unexploitability property of "defect unless proof of cooperation" agents (Critch, Dennis and Russell, 2022), now protecting people outside the game.
+- **Selection.** Cooperation is earned only by being legibly of the approved design. Membership is rewarded in the program meta-game, so the design acts as a standard with a network effect.
+- **Cheap verification.** Membership is a property of code plus a certificate, checked by inspection. No proof search over mutual behaviour is needed, so the unknown proof-length threshold of the Löbian results does not arise.
+- **No world model inside the proof system.** The claim "this design preserves human power" is argued once, outside the game, by ordinary theory and evidence.
+
+## What must be verified
+
+| Claim | How | Status |
+|---|---|---|
+| The whole program is an instance of the design, with no wrapper overriding it | Source inspection | Feasible |
+| The current weights result from the visible training algorithm on the logged data | Succinct, incrementally updated proof of training (Abbaszadeh et al., 2024), or hardware attestation | Proofs exist for small networks; attestation shifts trust to the hardware vendor |
+| The log is complete and its entries authentic | Append-only commitments published as observations arrive; signed sources | Feasible, needs infrastructure |
+| The world model is close to what the training objective targets | Loss bound on committed test queries | Statistical evidence only |
+
+Hashing alone shows a log was not altered.
+It does not show the weights follow from it; that needs re-execution or a proof of the computation.
+
+## Open problems
+
+1. **Endogenous conditionality.** Does an agent of the design choose, from its own objective, to cooperate with verified instances and fall back otherwise? If the rule has to be added as a wrapper, the agent fails its own membership test.
+2. **Free parameters.** Whose power counts and how it is aggregated must be fixed or bounded by the class definition.
+3. **Safe fallback.** The "else" action must itself not lower human power; a true no-op may not exist.
+4. **Scale.** Reported provers need minutes per training step for networks of about ten million parameters.
+5. **Procedure versus quality.** A proof of training certifies that the algorithm was followed, not that it converged.
+6. **Dual use.** The mechanism entrenches whichever design is chosen, good or bad.
+
+## References
+
+- Abbaszadeh, K., Pappas, C., Katz, J. and Papadopoulos, D. (2024) 'Zero-knowledge proofs of training for deep neural networks', *ACM CCS 2024*. Cryptology ePrint Archive, Paper 2024/162. <https://eprint.iacr.org/2024/162>
+- Critch, A., Dennis, M. and Russell, S. (2022) 'Cooperative and uncooperative institution designs: surprises and problems in open-source game theory', *arXiv preprint* arXiv:2208.07006. <https://doi.org/10.48550/arXiv.2208.07006>
